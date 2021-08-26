@@ -1,0 +1,70 @@
+# Temporary Files
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 
+.asv
+*rtf
+.ipynb_checkpoints
+
+# pyc files
+*.pyc
+*.pyxc
+*.pyxbldc
+
+# PyCharm
+*/.idea/*
+
+# Data
+source/voreen_based_approach/data/*
+source/graph_evaluation/3D_vessel_data/
+source/graph_evaluation/synthetic_vessels/
+
+# documentation
+Documentation
+Documentation.zip
+
+# backup files 
+*.bak
+
+# vtk / csv graph files
+*.vtk
+*.csv
+*.json
+*.g
+*.vvg
+*.tif
+*.nii
+*.tiff
+*.mhd
+*.npy
+*.npz
+*.zraw
+*.png
+*.h5
+
+# archives
+
+*.tar
+*.gz
+*.zip
+*.tar.gz
+*.tar.xf
+*.tar.xz
+*.7z
+*.tar.*
+
+# matlab
+*.mat
+#pickle
+*.pt
+
+# figures
+*.png
+*.pdf

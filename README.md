@@ -24,9 +24,9 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 
 #### 3. Generate Atlas features
 Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`
-#### 4. Convert to Pytorch-Geometric Data
+#### 4. Convert to Pytorch-Geometric Dataloader
 Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-rediction and node-classification task.
-#### 5. Convert to OGB compatible format
+#### 5. Convert to OGB Dataloader
 Got to `./source/ogb_dataset/link_prediction/` and run `update_ogbl_master.sh` for link-rediction task
 
 Go to `./source/ogb_dataset/node_classification/` and run `update_ogbn_master.sh` for node-classification task.

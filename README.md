@@ -25,15 +25,15 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 #### Download Dataset
 |Dataset Name | Unprocessed | Preprocessed |
 |-----|-------------|--------------|
-|BALBc1|[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-|BALBc2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
-BALBc3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
-C57BL/6-1  |[download]() |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
-C57BL/6-2  |[download]() |[download](https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip) |
-C57BL/6-3  |[download]() |[download](https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip) |
-CD1-E-1 |[download]() |[download](https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip) |
-CD1-E-2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip) |
-CD1-E-3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip) |
+|BALBc_no1|[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
+|BALBc_no2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
+BALBc_no3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
+C57BL_6_no1  |[download]() |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
+C57BL_6_no2  |[download]() |[download](https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip) |
+C57BL_6_no3  |[download]() |[download](https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip) |
+CD1-E_no1 |[download]() |[download](https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip) |
+CD1-E_no2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip) |
+CD1-E_no3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip) |
 <!-- 
 C57BL/6-K18 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 C57BL/6-K19 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
@@ -44,7 +44,7 @@ Synth. Graph 3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21Aii
 Synth. Graph 4 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 Synth. Graph 5 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) | -->
 
-#### 3. Generate Atlas features
+#### 3. Generate Atlas features (skipped for now)
 Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`
 #### 4. Convert to Pytorch-Geometric Dataloader
 Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-rediction and node-classification task.
@@ -53,6 +53,10 @@ Got to `./source/ogb_dataset/link_prediction/` and run `update_ogbl_master.sh` f
 
 Go to `./source/ogb_dataset/node_classification/` and run `update_ogbn_master.sh` for node-classification task.
 ## Baseline Instruction
+
+#### 1. Link Prediction task
+
+#### 2. Node Classificatio task
 
 ## Contribute 
 

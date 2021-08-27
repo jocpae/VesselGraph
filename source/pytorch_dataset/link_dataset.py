@@ -93,7 +93,7 @@ class LinkVesselGraph(InMemoryDataset):
         'link_vessap_roi1':{'folder': 'link_vessap_roi1.zip',
              'url': 'https://syncandshare.lrz.de/dl/fiAbFXpUsvjh9HSKh58Tb5kR/link_vessap_roi1.zip',
              'AlanBrainAtlas': False},
-        'link_vessap_roi2': {'folder': 'link_vessap_roi2.zip',
+        'link_vessap_roi2': {'folder': 'link_vessap_roi2.zip', # TODO: check bug here
                              'url': 'https://syncandshare.lrz.de/dl/fiAbFXpUsvjh9HSKh58Tb5kR/link_vessap_roi1.zip',
                              'AlanBrainAtlas': False},
         'link_vessap_roi3': {'folder': 'link_vessap_roi3.zip',

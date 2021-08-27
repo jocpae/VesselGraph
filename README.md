@@ -72,4 +72,5 @@ Please cite this work if any of our code or datasets are helpful for your resear
 
 ## License 
 
-Our project is licensed under the [MIT license](https://github.com/jocpae/VesselGraph/LICENSE).
+Our software is licensed under the [MIT license](https://github.com/jocpae/VesselGraph/LICENSE).
+The data is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Namensnennung-Nicht kommerziell 4.0 International Lizenz</a>.

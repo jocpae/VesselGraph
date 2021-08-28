@@ -1,12 +1,21 @@
+![alt text](graph_abstract.png "Logo Title Text 1")
 ## Introduction
-![alt text](synthetic_overview.png "Logo Title Text 1")
-
 Welcome to the project page of *DeepVesselGraph*  A Dataset and Benchmark for Graph Learning and Neuroscience. <br/>
 
 Biological neural networks define human and mammalian brain function and intelligence and form ultra-large, spatial, structured graphs. Their neuronal organization is closely interconnected with the spatial organization of the brain's microvasculature, which supplies oxygen to the neurons and builds a complementary spatial graph. In this project we are providing an extendable dataset of whole-brain vessel graphs based on various multi-center imaging protocols. 
 
 This new dataset paves a pathway towards translating advanced graph learning research into the field of neuroscience. Complementarily, the new dataset raises challenging graph learning research questions for the machine learning community, for example how to incorporate biological priors in a meaningful and interpretable way into learning algorithms. 
 
+
+## Features
+- *Whole brain vessel graphs:* are the key for research questions to Biology and Neuroscience, including Neuronal organisation, stroke modeling and hemodynamics
+- *Ready-to use and large set of data:* We are providing whole brain graphs from different research groups and will
+- *Data-Loaders:* We are providing extensive functions to readily process our data for machine learning research, including the community standard OGB and pyG dataloaders
+- *Benchmarks:* We benchmarked a comprehensive set of state of the art methods in link prediction and node classification; we provide all codes and detailed instructions
+- *Open-source, “living” initiative:* VesselGraph is an open source initiative. We want to expand our datasets as soon as other brain imaging becomes publicly available
+
+
+![alt text](synthetic_overview.png "Logo Title Text 1")
 ## Table of contents
 
 * [Datasets](#dataset-instruction)
@@ -49,9 +58,20 @@ Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_at
 #### 4. Convert to Pytorch-Geometric Dataloader
 Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-rediction and node-classification task.
 #### 5. Convert to OGB Dataloader
-Got to `./source/ogb_dataset/link_prediction/` and run `update_ogbl_master.sh` for link-rediction task
+Got to `./source/ogb_dataset/link_prediction/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above and `--splitting_strategy` either `random` or `spatial`
 
-Go to `./source/ogb_dataset/node_classification/` and run `update_ogbn_master.sh` for node-classification task.
+Subsequently run `update_ogbl_master.sh` for compileing the ogb repository locally
+
+Go to `./source/ogb_dataset/node_classification/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above
+
+We use the following options
+
+Enter indices of desired features (Use "," to separate them): 0,1,2
+Enter feature index of desired label: 4
+Choose between a certain number of balanced classes (bc) or define classes by pixel boundaries (pb): pb
+Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13.33
+
+Subsequently run `update_ogbn_master.sh` for node-classification task.
 ## Baseline Instruction
 
 #### 1. Link Prediction task

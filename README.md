@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/399400923.svg)](https://zenodo.org/badge/latestdoi/399400923)
 ![alt text](graph_abstract.png "Logo Title Text 1")
 ## Introduction
 Welcome to the project page of *DeepVesselGraph*  A Dataset and Benchmark for Graph Learning and Neuroscience. <br/>
@@ -18,12 +19,13 @@ This new dataset paves a pathway towards translating advanced graph learning res
 ![alt text](synthetic_overview.png "Logo Title Text 1")
 ## Table of contents
 
-* [Datasets](#dataset-instruction)
+* [Dataset](#dataset-description)
+* [Dataloader](#dataloader-instruction)
 * [Baselines](#baseline-instruction)
-* [Biological Context](#bio)
 
 
-## Dataset Instruction
+
+## Dataset Description
 #### 1. Generate Raw Graph fron Segmentation using Voreen
 Use [Voreen Graph Generation Tool](https://github.com/jqmcginnis/voreen) to make the `node_list` and `edge_list` from a segmentation volume.
 
@@ -76,6 +78,13 @@ Choose between a certain number of balanced classes (bc) or define classes by pi
 Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13.33
 ```
 - Subsequently run `update_ogbn_master.sh` for node-classification task.
+
+## Dataloader Instruction
+
+#### 1. OGB Dataloader
+
+#### 1. Pytorch-geometric Dataloader
+
 ## Baseline Instruction
 
 #### 1. Link Prediction task
@@ -92,7 +101,10 @@ Authors Authors Authors "Whole Brain Vessel Graphs: A Dataset and Benchmark for 
   
 Please cite this work if any of our code or datasets are helpful for your research. Considering the specific graphs, please also cite the respective original datasets as described in the preprint.
 
-
+## Link to the Base Dataset
+1. Vessap Dataset: [[website](http://discotechnologies.org/VesSAP/)][[paper](https://doi.org/10.1038/s41592-020-0792-1)]
+2. Kleinfeld Dataset: [[website](https://neurophysics.ucsd.edu/software.php)][[paper](https://doi.org/10.1016/j.neuron.2021.02.006)]
+3. Synthetic Dataset: [[website](https://github.com/giesekow/deepvesselnet/wiki/Datasets)][[paper](https://doi.org/10.1016/j.media.2012.04.009)]
 
 ## License 
 

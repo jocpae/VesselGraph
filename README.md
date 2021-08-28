@@ -34,7 +34,7 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 #### Download Dataset
 |Dataset Name | Unprocessed | Preprocessed |
 |-----|-------------|--------------|
-|BALBc_no1|[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
+|BALBc_no1|[download](https://syncandshare.lrz.de/dl/fiCCEay5icibQNoNw57HS97/vessap_brain_graphs/raw_dataset/BALBc_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 |BALBc_no2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
 BALBc_no3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
 C57BL_6_no1  |[download]() |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
@@ -58,20 +58,24 @@ Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_at
 #### 4. Convert to Pytorch-Geometric Dataloader
 Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-rediction and node-classification task.
 #### 5. Convert to OGB Dataloader
-Got to `./source/ogb_dataset/link_prediction/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above and `--splitting_strategy` either `random` or `spatial`
+- Got to `./source/ogb_dataset/link_prediction/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above and `--splitting_strategy` either `random` or `spatial`
 
-Subsequently run `update_ogbl_master.sh` for compileing the ogb repository locally
+- Subsequently run `update_ogbl_master.sh` for compileing the ogb repository locally
 
-Go to `./source/ogb_dataset/node_classification/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above
+- Go to `./source/ogb_dataset/node_classification/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above
 
-We use the following options
+- We use the following options
 
+```bash
 Enter indices of desired features (Use "," to separate them): 0,1,2
-Enter feature index of desired label: 4
-Choose between a certain number of balanced classes (bc) or define classes by pixel boundaries (pb): pb
-Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13.33
 
-Subsequently run `update_ogbn_master.sh` for node-classification task.
+Enter feature index of desired label: 4
+
+Choose between a certain number of balanced classes (bc) or define classes by pixel boundaries (pb): pb
+
+Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13.33
+```
+- Subsequently run `update_ogbn_master.sh` for node-classification task.
 ## Baseline Instruction
 
 #### 1. Link Prediction task
@@ -92,4 +96,5 @@ Please cite this work if any of our code or datasets are helpful for your resear
 
 ## License 
 
-Our project is licensed under the [MIT license](https://github.com/jocpae/VesselGraph/LICENSE).
+Our software is licensed under the [MIT license](https://github.com/jocpae/VesselGraph/LICENSE).
+The data is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Namensnennung-Nicht kommerziell 4.0 International Lizenz</a>.

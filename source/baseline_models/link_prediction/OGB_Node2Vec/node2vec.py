@@ -22,7 +22,7 @@ def save_embedding(dataset_name, model):
 
 def main():
     parser = argparse.ArgumentParser(description='OGBL (Node2Vec)')
-    parser.add_argument('--dataset',type=str,default='ogbl-BALBc_no1_spatial_no_edge_attr')
+    parser.add_argument('--dataset',type=str,default='ogbl-link_vessap_roi3_spatial_no_edge_attr')
     parser.add_argument('--device', type=int, default=0)
     parser.add_argument('--embedding_dim', type=int, default=128)
     parser.add_argument('--walk_length', type=int, default=40)
@@ -33,9 +33,9 @@ def main():
     parser.add_argument('--epochs', type=int, default=2)
     parser.add_argument('--log_steps', type=int, default=1)
 
-    parser.add_argument('--log_dir',type=str)
-    parser.add_argument('--n_par_combs',type=int)
-    parser.add_argument('--curr_param_idx', type=int)
+    parser.add_argument('--log_dir',type=str, default= "node2vec_log")
+    parser.add_argument('--n_par_combs',type=int, default = 1) 
+    parser.add_argument('--curr_param_idx', type=int, default = 1)
 
     args = parser.parse_args()
 

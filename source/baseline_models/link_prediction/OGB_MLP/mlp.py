@@ -208,7 +208,7 @@ def test(predictor, x, split_edge, evaluator, batch_size,eval_metric):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='OGBL-PPA (MLP)')
+    parser = argparse.ArgumentParser(description='OGBL- MLP')
     parser.add_argument('--device', type=int, default=0)
     parser.add_argument('--log_steps', type=int, default=1)
     parser.add_argument('--num_layers', type=int, default=3)
@@ -223,18 +223,21 @@ def main():
     parser.add_argument('--eval_metric', type=str, default='auc')
     parser.add_argument('--splitting_strategy',type=str,default='spatial')
 
-    parser.add_argument('--log_dir',type=str)
-    parser.add_argument('--n_par_combs',type=int)
-    parser.add_argument('--curr_param_idx', type=int)
+    parser.add_argument('--log_dir',type=str, default= "mlp_log")
+    parser.add_argument('--n_par_combs',type=int, default = 1) 
+    parser.add_argument('--curr_param_idx', type=int, default = 1)
 
     # Log settings
     parser.add_argument('--save_appendix', type=str, default='', 
                         help="an appendix to the save directory")
 
+    # Load pretrained model
+    parser.add_argument('--load_state_dict',action='store_true')
+    parser.add_argument('--test_only',action='store_true')
+
     args = parser.parse_args()
     device = f'cuda:{args.device}' if torch.cuda.is_available() else 'cpu'
     device = torch.device(device)
-
 
     print(f'Running on: {args.dataset}')
     print(f'Utilizing Evaluation Metric: {args.eval_metric}')
@@ -251,7 +254,7 @@ def main():
     if not os.path.exists(args.res_dir):
         os.makedirs(args.res_dir) 
         # Backup python files.
-    copy('mlp_hyper_final.py', args.res_dir)
+    copy('mlp.py', args.res_dir)
     log_file = os.path.join(args.res_dir, 'log.txt')
 
     # Save command line input.
@@ -270,22 +273,60 @@ def main():
     data.x[:, 2] = torch.nn.functional.normalize(data.x[:, 2], dim=0)
 
     x = data.x.to(torch.float)
-    #embedding = torch.load('embedding.pt', map_location='cpu')
     embedding_name = 'node2vec_'+ args.dataset +'.pt'
-    embedding = torch.load(embedding_name, map_location='cpu')
+    try:
+        embedding = torch.load(embedding_name, map_location='cpu')
+    except OSError as e:
+        print(f'{e.filename} does not exist!')
+        print("Please create node2vec embeddings first.")
+        exit()
+
     x = torch.cat([x, embedding], dim=-1)
     x = x.to(device)
 
     predictor = LinkPredictor(x.size(-1), args.hidden_channels, 1,
                               args.num_layers, args.dropout).to(device)
 
-    optimizer = torch.optim.Adam(predictor.parameters(), lr=args.lr)#,weight_decay)
+    optimizer = torch.optim.Adam(predictor.parameters(), lr=args.lr)
 
     evaluator = Evaluator(name=args.dataset)
     logger = Logger(args.runs, args)
 
     for run in range(args.runs):
+
         predictor.reset_parameters()
+
+        if args.load_state_dict:
+
+            print("Loading submission state dictionaries")
+
+            append = 'neurips_state_dict_final_mlp_'
+            predictor_name = append + 'predictor_checkpoint.pth'
+            optimizer_name = append + 'optimizer_checkpoint.pth'
+
+            predictor.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),predictor_name), map_location=torch.device('cpu'))#,strict=False)
+            )
+            optimizer.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),optimizer_name), map_location=torch.device('cpu'))#,strict=False)
+            )
+
+        if args.test_only:
+            results = test(predictor, x, split_edge, evaluator,
+                               args.batch_size,args.eval_metric)
+
+            for key, result in results.items():
+                train_res, valid_res, test_res = result
+                
+                print(key)
+                log_text = (   
+                    f'Train: {100 * train_res:.2f}%, ' +
+                    f'Valid: {100 * valid_res:.2f}%, ' +
+                    f'Test: {100 * test_res:.2f}%')
+
+                print(log_text)
+                exit()
+    
         # instantiate tensorboard writer
         writer = SummaryWriter(os.path.join(args.log_dir,f'{args.curr_param_idx}_of_{args.n_par_combs}'))
         best_val = 0.0

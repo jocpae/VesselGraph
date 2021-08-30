@@ -1,4 +1,5 @@
 import sys
+import os
 
 sys.path.append('../../../')
 
@@ -8,7 +9,7 @@ os.environ["MKL_NUM_THREADS"] = "2" # export MKL_NUM_THREADS=1
 os.environ["VECLIB_MAXIMUM_THREADS"] = "2" # export VECLIB_MAXIMUM_THREADS=1
 os.environ["NUMEXPR_NUM_THREADS"] = "2" # export NUMEXPR_NUM_THREADS=1
 
-import os
+
 import argparse
 import time
 from shutil import copy
@@ -57,7 +58,6 @@ def evaluate_auc(train_pred,train_true,val_pred, val_true, test_pred, test_true)
     results['AUC'] = (train_auc,valid_auc, test_auc)
 
     return results
-
 
 
 class LinkPredictor(torch.nn.Module):
@@ -212,26 +212,33 @@ def test(x, predictor, split_edge, evaluator, batch_size,eval_metric):
 
 def main():
     parser = argparse.ArgumentParser(description='OGBL MF algorithm')
+
+    parser.add_argument('--log_dir',type=str, default= "mf_log")
+    parser.add_argument('--n_par_combs',type=int, default = 1) 
+    parser.add_argument('--curr_param_idx', type=int, default = 1)
+
     parser.add_argument('--device', type=int, default=0)
     parser.add_argument('--log_steps', type=int, default=1)
     parser.add_argument('--num_layers', type=int, default=3)
-    parser.add_argument('--hidden_channels', type=int, default=256)
-    parser.add_argument('--dropout', type=float, default=0.0)
+    parser.add_argument('--hidden_channels', type=int, default=64)
+    parser.add_argument('--dropout', type=float, default=0.2)
     parser.add_argument('--batch_size', type=int, default=64 * 1024)
     parser.add_argument('--lr', type=float, default=0.0001) #0.005
-    parser.add_argument('--epochs', type=int, default=1000)
+    parser.add_argument('--epochs', type=int, default=500)
     parser.add_argument('--eval_steps', type=int, default=1)
     parser.add_argument('--runs', type=int, default=10)
     parser.add_argument('--eval_metric', type=str, default='auc')
     parser.add_argument('--dataset', type=str, default='ogbl-link_vessap_roi3_spatial_no_edge_attr')
     parser.add_argument('--splitting_strategy', type=str, default='spatial')
-    parser.add_argument('--log_dir',type=str)
-    parser.add_argument('--n_par_combs',type=int)
-    parser.add_argument('--curr_param_idx', type=int)
+
 
     # Log settings
     parser.add_argument('--save_appendix', type=str, default='', 
                         help="an appendix to the save directory")
+
+    # Load pretrained model
+    parser.add_argument('--load_state_dict',action='store_true')
+    parser.add_argument('--test_only',action='store_true')
 
     args = parser.parse_args()
 
@@ -288,6 +295,41 @@ def main():
         optimizer = torch.optim.Adam(
             list(emb.parameters()) + list(predictor.parameters()), lr=args.lr)
 
+        if args.load_state_dict:
+
+            print("Loading submission state dictionaries")
+
+            append = 'neurips_state_dict_final_mf_'
+            predictor_name = append + 'predictor_checkpoint.pth'
+            optimizer_name = append + 'optimizer_checkpoint.pth'
+            emb_name = append + 'emb_checkpoint.pth'
+
+            predictor.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),predictor_name), map_location=torch.device('cpu'))#,strict=False)
+            )
+            optimizer.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),optimizer_name), map_location=torch.device('cpu'))#,strict=False)
+            )
+            emb.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),emb_name), map_location=torch.device('cpu'))#,strict=False)
+            )
+
+        if args.test_only:
+            results = test(emb.weight, predictor, split_edge, evaluator,
+                               args.batch_size,args.eval_metric)
+
+            for key, result in results.items():
+                train_res, valid_res, test_res = result
+                
+                print(key)
+                log_text = (   
+                    f'Train: {100 * train_res:.2f}%, ' +
+                    f'Valid: {100 * valid_res:.2f}%, ' +
+                    f'Test: {100 * test_res:.2f}%')
+
+                print(log_text)
+                exit()
+
         best_val = 0.0
         best_epoch = 0
         for epoch in range(1, 1 + args.epochs):
@@ -305,8 +347,10 @@ def main():
                         best_val = valid_res
                         best_epoch = epoch
                         append = 'neurips_state_dict_final_mf_'
+                        emb_name = append + 'emb_checkpoint.pth'
                         predictor_name = append + 'predictor_checkpoint.pth'
                         optimizer_name = append + 'optimizer_checkpoint.pth'
+                        torch.save(emb.state_dict(), emb_name)
                         torch.save(predictor.state_dict(), predictor_name)
                         torch.save(optimizer.state_dict(), optimizer_name)
 

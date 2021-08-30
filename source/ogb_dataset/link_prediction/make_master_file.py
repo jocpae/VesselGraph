@@ -110,6 +110,22 @@ dataset_dict[name]['binary'] = False
 #                                                                                                                               #
 #################################################################################################################################
 
+### add meta-information about vessap roi 3
+name = 'ogbl-link_vessap_roi3_spatial_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'link_vessap_roi3_spatial_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiUjUxaFscC2mj8Qc53EgLeh/link_vessap_roi3_spatial_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = False
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
 
 ### add meta-information about vessap roi 3
 name = 'ogbl-link_vessap_roi3_spatial_no_edge_attr'

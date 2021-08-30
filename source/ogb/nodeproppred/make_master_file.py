@@ -236,6 +236,24 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 
+### add meta-information about product category prediction task
+name = 'ogbn-node_vessap_roi3_pb_minRadiusAvg'
+dataset_dict[name] = {'num tasks': 1, 'num classes': 3, 'eval metric': 'acc', 'task type': 'multiclass classification'}
+dataset_dict[name]['download_name'] = 'node_vessap_roi3_pb_minRadiusAvg'
+dataset_dict[name]['version'] = 1
+# usually use the sync and share link; for test, debug and development you can also use a local file link
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiC9VCUydPr2uknrHpShXhZP/node_vessap_roi3_pb_minRadiusAvg.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = True
+dataset_dict[name]['split'] = 'random'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+
 df = pd.DataFrame(dataset_dict)
 # saving the dataframe 
 df.to_csv('master.csv')

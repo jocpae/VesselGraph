@@ -17,6 +17,7 @@ import time
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
+import pdb
 
 import torch_geometric.transforms as T
 from torch_geometric.nn import GCNConv, SAGEConv, GATv2Conv
@@ -318,12 +319,12 @@ def main():
     parser.add_argument('--use_node_embedding', action='store_true')
     parser.add_argument('--use_sage', action='store_true')
     parser.add_argument('--use_gat', action='store_true')
-    parser.add_argument('--num_layers', type=int, default=3)
+    parser.add_argument('--num_layers', type=int, default=2)
     parser.add_argument('--hidden_channels', type=int, default=256)
-    parser.add_argument('--dropout', type=float, default=0.0)
+    parser.add_argument('--dropout', type=float, default=0.5)
     parser.add_argument('--batch_size', type=int, default=64 * 1024)
-    parser.add_argument('--lr', type=float, default=0.00005) # 0.01, better:0.0001
-    parser.add_argument('--epochs', type=int, default=100) #50
+    parser.add_argument('--lr', type=float, default=0.000001) 
+    parser.add_argument('--epochs', type=int, default=100) 
     parser.add_argument('--eval_steps', type=int, default=1)
     parser.add_argument('--runs', type=int, default=10)
     parser.add_argument('--eval_metric', type=str, default='auc')
@@ -331,6 +332,9 @@ def main():
     parser.add_argument('--splitting_strategy',type=str,default='spatial')
     parser.add_argument('--use_edge_weight',action='store_true')
 
+    # Load pretrained model
+    parser.add_argument('--load_state_dict',action='store_true')
+    parser.add_argument('--test_only',action='store_true')
 
     args = parser.parse_args()
     device = f'cuda:{args.device}' if torch.cuda.is_available() else 'cpu'
@@ -351,10 +355,9 @@ def main():
         dataset = PygLinkPropPredDataset(name=args.dataset,
                                      transform=T.ToSparseTensor())
         data = dataset[0]
-
-         
      
     data.x = data.x.to(torch.float)
+
     # normalize x,y,z coordinates  
     data.x[:, 0] = torch.nn.functional.normalize(data.x[:, 0], dim=0)
     data.x[:, 1] = torch.nn.functional.normalize(data.x[:, 1], dim=0)
@@ -363,8 +366,8 @@ def main():
     if args.use_node_embedding:
         embedding_name = 'node2vec_'+ args.dataset +'.pt'
         data.x = torch.cat([data.x, torch.load(embedding_name)], dim=-1)
-    data = data.to(device)
 
+    data = data.to(device)
     split_edge = dataset.get_edge_split()
 
     # from Muhan Zhang's OGB SEAL repository
@@ -420,14 +423,59 @@ def main():
                               args.num_layers, args.dropout).to(device)
 
     evaluator = Evaluator(name=args.dataset)
-    logger = Logger(args.runs, args)
+    logger = Logger(args.runs, args)   
 
     for run in range(args.runs):
+        
         model.reset_parameters()
         predictor.reset_parameters()
         optimizer = torch.optim.Adam(
             list(model.parameters()) + list(predictor.parameters()),
             lr=args.lr)
+
+        if args.load_state_dict:
+
+            print("Loading State Dictonaries")
+
+            dict_path = 'neurips_state_dict_final_gnn_'
+
+            if args.use_sage:
+
+                dict_path += 'sage_'
+
+            if args.use_node_embedding:
+
+                dict_path += 'embedding_'
+
+            model_path = dict_path + 'model_checkpoint.pth'
+            optim_path = dict_path + 'optimizer_checkpoint.pth'
+            predictor_path = dict_path + 'predictor_checkpoint.pth'
+
+            model.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),model_path), map_location=torch.device('cpu'))
+            )
+            predictor.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),predictor_path), map_location=torch.device('cpu'))
+            )
+            optimizer.load_state_dict(
+                torch.load(os.path.join(os.getcwd(),optim_path), map_location=torch.device('cpu'))
+            )
+
+        if args.test_only:
+            results = test(model, predictor, data, split_edge, evaluator,
+                                args.batch_size, args.eval_metric)
+
+            for key, result in results.items():
+                train_res, valid_res, test_res = result
+                
+                print(key)
+                log_text = (   
+                    f'Train: {100 * train_res:.2f}%, ' +
+                    f'Valid: {100 * valid_res:.2f}%, ' +
+                    f'Test: {100 * test_res:.2f}%')
+
+                print(log_text)
+                exit()
 
         # init tensorboard writer
         writer = SummaryWriter(os.path.join(args.log_dir,f'{args.curr_param_idx}_of_{args.n_par_combs}'))
@@ -454,6 +502,7 @@ def main():
                         append += 'embedding_'
 
                     if valid_res > best_val:
+                        
                         print("save best validation!")
                         best_val = valid_res
                         best_epoch = epoch
@@ -462,7 +511,7 @@ def main():
                             model_name = append + 'model_checkpoint.pth'
                             optimizer_name = append + 'optimizer_checkpoint.pth'
                             torch.save(predictor.state_dict(), predictor_name)
-                            torch.save(predictor.state_dict(), model_name)
+                            torch.save(model.state_dict(), model_name)
                             torch.save(optimizer.state_dict(), optimizer_name)
 
                     logger.add_result(run, result)

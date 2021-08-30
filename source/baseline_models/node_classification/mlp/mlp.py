@@ -167,9 +167,9 @@ def calculate_weight_vector(labels, return_unique_labels=False):
 
 def main():
     # get start time
-    start_time = time.clock()
+    start_time = time.time()
 
-    parser = argparse.ArgumentParser(description='ogbn-italo (MLP)')
+    parser = argparse.ArgumentParser(description='ogbn- MLP')
     parser.add_argument('--device', type=int, default=0)
     parser.add_argument('--log_steps', type=int, default=1)
     parser.add_argument('--use_node_embedding', action='store_true')
@@ -235,7 +235,7 @@ def main():
     model = MLP(x.size(-1), args.hidden_channels, dataset.num_classes, args.num_layers,
                 args.dropout).to(device)
 
-    evaluator = Evaluator(name='ogbn-italo')
+    evaluator = Evaluator(name=f'ogbn-{args.ds_name}')
     logger = Logger(args.runs, args)
 
     # calculate weights for loss function and fetch unique labels

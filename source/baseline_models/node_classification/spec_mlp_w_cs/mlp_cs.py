@@ -205,7 +205,7 @@ def calculate_weight_vector(labels, return_unique_labels=False):
 
 def main():
     # get start time
-    start_time = time.clock()
+    start_time = time.time()
 
     parser = argparse.ArgumentParser(description='OGBN-Products (MLP-CS)')
     parser.add_argument('--device', type=int, default=0)

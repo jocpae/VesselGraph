@@ -33,7 +33,6 @@ The data is licensed under a <a rel="license" href="http://creativecommons.org/l
 * [Baselines](#baseline-instruction)
 
 
-
 ## Dataset Description
 #### 1. Generate Raw Graph fron Segmentation using Voreen
 Use [Voreen Graph Generation Tool](https://github.com/jqmcginnis/voreen) to make the `node_list` and `edge_list` from a segmentation volume.
@@ -45,15 +44,15 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 #### Download Dataset
 |Dataset Name | Unprocessed | Preprocessed |
 |-----|-------------|--------------|
-|BALBc_no1|[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-|BALBc_no2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
-BALBc_no3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
-C57BL_6_no1  |[download]() |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
-C57BL_6_no2  |[download]() |[download](https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip) |
-C57BL_6_no3  |[download]() |[download](https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip) |
-CD1-E_no1 |[download]() |[download](https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip) |
-CD1-E_no2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip) |
-CD1-E_no3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip) |
+|BALBc_no1|[download](https://syncandshare.lrz.de/getlink/fiWxG4k3jRhLNGmW7RHddvKY/BALBc_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
+|BALBc_no2 |[download](https://syncandshare.lrz.de/getlink/fiCWEj5mnuwDkgbjww6CAbF4/BALBc_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
+BALBc_no3 |[download](https://syncandshare.lrz.de/getlink/fiBNTpDbmMQoTx6qpoieATMh/BALBc_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
+C57BL_6_no1  |[download](https://syncandshare.lrz.de/getlink/fiToWvNWjmf2165TtStGWG3a/C57BL_6_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
+C57BL_6_no2  |[download](https://syncandshare.lrz.de/getlink/fiTs8xQM7yGuD4dSc4uvEWa4/C57BL_6_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip) |
+C57BL_6_no3  |[download](https://syncandshare.lrz.de/getlink/fiAmLSy2j5CePwoWcZhZc6Hz/C57BL_6_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip) |
+CD1-E_no1 |[download](https://syncandshare.lrz.de/getlink/fiSDag6MmmdUqhNmZAMgMb2U/CD1-E_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip) |
+CD1-E_no2 |[download](https://syncandshare.lrz.de/getlink/fiVtFCYtugvPwvvCSSfWPFzc/CD1-E_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip) |
+CD1-E_no3 |[download](https://syncandshare.lrz.de/getlink/fiMCHhkfr33bFxr2guDWtYYL/CD1-E_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip) |
 <!-- 
 C57BL/6-K18 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 C57BL/6-K19 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
@@ -120,23 +119,24 @@ e.g. to run GNN, one need to use the follwoeing `python3 gnn.py --dataset DATASE
 *Download Trained Weight*
 |Model Name | Checkpoint | 
 -----|---------------
-Adamic Adar|[download]()
-Common Neighbors |[download]()
-Resource Allocation |[download]()
-Matrix Factorization  |[download]()
-GCN GCN   |[download]()
-GCN GCN + embeddings |[download]()
-GCN SAGE + embeddings |[download]()
-GCN SAGE |[download]()
-SEAL |[download]()
+Adamic Adar|[heuristic, not applicable]
+Common Neighbors |[heuristic, not applicable]
+Resource Allocation |[heuristic, not applicable]
+Matrix Factorization |[download](https://syncandshare.lrz.de/getlink/fi2SY3S11Z1jdnvPnh5xn5RK/MF)
+MLP|[download](https://syncandshare.lrz.de/getlink/fi2SY3S11Z1jdnvPnh5xn5RK/MF)
+GCN GCN   |[download](https://syncandshare.lrz.de/getlink/fiLN8QNyXdHm3jNUkgTya3SA/GNN_GCN)
+GCN GCN + embeddings |[download](https://syncandshare.lrz.de/getlink/fiLiTAy7xgNJp69SyYjKj6jc/GNN_GCN_embeddings)
+GCN SAGE + embeddings |[download](https://syncandshare.lrz.de/getlink/fiEb3iZrrU15PGkNemiZLiXi/GNN_SAGE_embeddings)
+GCN SAGE |[download](https://syncandshare.lrz.de/getlink/fi2TtEzMKUSxastBvEGmUjzx/GNN_SAGE)
+SEAL |[download](https://syncandshare.lrz.de/getlink/fiGbhGhyYFCyqGfnWqsjKbHb/SEAL)
 
 2. **Testing**
 
 Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
 
-e.g. to run GNN, one need to use the follwoeing `python3 gnn.py --test_only --dataset DATASET_NAME`
+e.g. to run GNN, one need to use the following `python3 gnn.py --test_only --dataset DATASET_NAME`
 
-#### 2. Node Classificatio task
+#### 2. Node Classification task
 
 1. **Training**
 
@@ -144,21 +144,21 @@ e.g. to run GNN, one need to use the follwoeing `python3 gnn.py --test_only --da
 *Download Trained Weight*
 |Model Name | Checkpoint | 
 -----|---------------
-GCN|[download]()
-GraphSAGE |[download]()
-GraphSAINT |[download]()
-SIGN |[download]()
-Cluster-GCN |[download]()
-MLP|[download]()
-SpecMLP-W + C\&S |[download]()
-SpecMLP-W + C\&S + N2Vec|[download]()
+GCN|[download](https://syncandshare.lrz.de/getlink/fi7P51t9pk7Tm7gU83ABi7x2/gnn)
+GraphSAGE |[download](https://syncandshare.lrz.de/getlink/fiN1GyuX2NVopUoKaNpahQYm/gnn_sage)
+GraphSAINT |[download](https://syncandshare.lrz.de/getlink/fiQrPQvm2f6rdCe3Z1bAbRc4/graph_saint)
+SIGN |[download](https://syncandshare.lrz.de/getlink/fiB1ZZfXf92RN89mWZuDuVZR/sign)
+Cluster-GCN |[download](https://syncandshare.lrz.de/getlink/fiE5MCmNaEoUnHrFVCqYfrzL/cluster_gcn)
+MLP|[download](https://syncandshare.lrz.de/getlink/fiH4GzQvCtS728iDec4mGWeq/mlp)
+SpecMLP-W + C\&S |[download](https://syncandshare.lrz.de/getlink/fiKJdZz19iAQCPmPxrFNPRQ9/mlp_cs)
+SpecMLP-W + C\&S + N2Vec|[download](https://syncandshare.lrz.de/getlink/fiWahsBTS6uAvEFFLqpzaThN/mlp_cs_node2vec)
 
 2. **Testing**
 
 
 ## Contribute 
 
-We are a living and continously maintained repository! Therefore, we welcome contributions of additional datasets and methods! There is multiple ways to contribute; if you are willing to share whole brain segmentations and graphs .... 
+We are a living and continously maintained repository! Therefore, we welcome contributions of additional datasets and methods! There are multiple ways to contribute; if you are willing to share whole brain segmentations and graphs .... 
 
 
 ## Link to the Base Dataset

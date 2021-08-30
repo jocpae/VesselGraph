@@ -161,11 +161,11 @@ Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `M
 
 e.g. to run GNN, one needs to use the following `python3 gnn.py --test_only --dataset DATASET_NAME`
 
-For the dataset name, we follow the OGB convention. For example, to run the BALBc_no1 whole brain with a spatial splitting strategy, and without edge features (edge attributes),
-use `python3 gnn.py --dataset ogbn-BALBc_no1_spatial_no_edge_attr`.
+For the dataset name, we follow the OGB convention. For example, to run the BALBc_no1 whole brain with minimum radius labels,
+use `python3 gnn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`.
 
 We also provide a memory-friendly alternative (a selected Region of Interest of the entire graph). To run the models on the selected region of interest, 
-use `python3 gnn.py --dataset ogbn-node_vessap_roi3_spatial_no_edge_attr`.
+use `python3 gnn.py --dataset ogbn-node_vessap_roi3_pb_minRadiusAvg`.
 
 If you are unsure what options are available, simply run the following command that will list all available datasets:
 

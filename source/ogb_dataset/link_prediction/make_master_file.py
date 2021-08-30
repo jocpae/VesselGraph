@@ -155,7 +155,7 @@ name = 'ogbl-BALBc_no1_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'BALBc_no1_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiHHnVwcmQsnZXfkKFLeo4Le/BALBc_no1_spatial_no_edge_attr.zip'
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiWVoqSRbKmrBHMgLRp4Hwdf/BALBc_no1_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -171,7 +171,7 @@ name = 'ogbl-BALBc_no1_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'BALBc_no1_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiHHnVwcmQsnZXfkKFLeo4Le/BALBc_no1_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -183,11 +183,11 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BALBc_no2
-name = 'ogbl-link_vessap_BALBc_no2_spatial_edge_attr'
+name = 'ogbl-BALBc_no2_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BALBc_no2_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'BALBc_no2_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiK1cLRMZxouZaU7MFL7jiYo/BALBc_no2_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -199,11 +199,11 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BALBc_no2
-name = 'ogbl-link_vessap_BALBc_no2_spatial_no_edge_attr'
+name = 'ogbl-BALBc_no2_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BALBc_no2_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'BALBc_no2_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiB13MkZriRV4iSeHfE5XT7H/BALBc_no2_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -215,11 +215,11 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BALBc_no3
-name = 'ogbl-link_vessap_BALBc_no3_spatial_edge_attr'
+name = 'ogbl-BALBc_no3_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BALBc_no3_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'BALBc_no3_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiMb6DhsnaJv6VTG4s2CdWbA/BALBc_no3_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -231,11 +231,11 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BALBc_no3
-name = 'ogbl-link_vessap_BALBc_no3_spatial_no_edge_attr'
+name = 'ogbl-BALBc_no3_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BALBc_no3_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'BALBc_no3_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiEZ3VNUtX31LoAPyVHVb7xv/BALBc_no3_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -249,9 +249,9 @@ dataset_dict[name]['binary'] = True
 ########################################################################################################################################
 
 ### add meta-information about BL6J_no1
-name = 'ogbl-link_vessap_BL6J_no1_spatial_edge_attr'
+name = 'ogbl-BL6J_no1_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BL6J_no1_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'BL6J_no1_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -265,9 +265,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BL6J_no1
-name = 'ogbl-link_vessap_BL6J_no1_spatial_no_edge_attr'
+name = 'ogbl-BL6J_no1_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BL6J_no1_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'BL6J_no1_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -281,9 +281,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BL6J_no2
-name = 'ogbl-link_vessap_BL6J_no2_spatial_edge_attr'
+name = 'ogbl-BL6J_no2_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BL6J_no2_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'BL6J_no2_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -297,9 +297,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BL6J_no2
-name = 'ogbl-link_vessap_BL6J_no2_spatial_no_edge_attr'
+name = 'ogbl-BL6J_no2_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BL6J_no2_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'BL6J_no2_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -313,9 +313,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BL6J_no3
-name = 'ogbl-link_vessap_BL6J_no3_spatial_edge_attr'
+name = 'ogbl-BL6J_no3_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BL6J_no3_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'BL6J_no3_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -329,9 +329,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about BL6J_no3
-name = 'ogbl-link_vessap_BL6J_no3_spatial_no_edge_attr'
+name = 'ogbl-BL6J_no3_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_BL6J_no3_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'BL6J_no3_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -347,9 +347,9 @@ dataset_dict[name]['binary'] = True
 ############################################################################################################################################
 
 ### add meta-information about CD1-E_no1
-name = 'ogbl-link_vessap_CD1-E_no1_spatial_edge_attr'
+name = 'ogbl-CD1-E_no1_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_CD1-E_no1_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'CD1-E_no1_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -363,9 +363,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about CD1-E_no1
-name = 'ogbl-link_vessap_CD1-E_no1_spatial_no_edge_attr'
+name = 'ogbl-CD1-E_no1_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_CD1-E_no1_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'CD1-E_no1_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -379,9 +379,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about CD1-E_no2
-name = 'ogbl-link_vessap_CD1-E_no2_spatial_edge_attr'
+name = 'ogbl-CD1-E_no2_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_CD1-E_no2_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'CD1-E_no2_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -395,9 +395,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about CD1-E_no2
-name = 'ogbl-link_vessap_CD1-E_no2_spatial_no_edge_attr'
+name = 'ogbl-CD1-E_no2_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_CD1-E_no2_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'CD1-E_no2_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -411,9 +411,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about CD1-E_no3
-name = 'ogbl-link_vessap_CD1-E_no3_spatial_edge_attr'
+name = 'ogbl-CD1-E_no3_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_CD1-E_no3_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'CD1-E_no3_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
@@ -427,9 +427,9 @@ dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
 ### add meta-information about CD1-E_no3
-name = 'ogbl-link_vessap_CD1-E_no3_spatial_no_edge_attr'
+name = 'ogbl-CD1-E_no3_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'link_vessap_CD1-E_no3_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'CD1-E_no3_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
 dataset_dict[name]['url'] = ''
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time

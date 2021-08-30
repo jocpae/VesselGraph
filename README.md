@@ -34,10 +34,12 @@ The data is licensed under a <a rel="license" href="http://creativecommons.org/l
 
 ## Instructions
 
-We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automaically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
-If you would rather work with customized solutions (different datasplits, etc.), we provide you with all steps of our pipeline.
+We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automatically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
+For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_master.sh` and `./source/ogb_dataset/node_classification/update_ogbn_master.sh` once, before you execute any
+of the algorithms in `./source/vaseline_models.`.
 
-In the following section, we describe how our graphs have been built. 
+If you would rather work with customized solutions (different datasplits, etc.), we provide you with all steps of our pipeline to generate, preprocess and convert the raw graphs to PyG
+and OGB formats. In the following section, we describe how our graphs have been built. You are invited to skip this section if you prefer working with our preprocessed graphs.
 
 ## Dataset Description
 #### 1. Generate Raw Graph fron Segmentation using Voreen
@@ -110,9 +112,14 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 
 ## Dataloader Instruction
 
+#### 1. Pytorch-geometric Dataloader
+
+We provide PyG dataset classes for link and node prediction tasks in `source/pytorch_dataset/`. Utilize LinkVesselGraph and NodeVesselGraph respectively.
+
 #### 1. OGB Dataloader
 
-#### 1. Pytorch-geometric Dataloader
+We store our graphs as OGBN (OGB Node Prediction) and OGBL (Link Prediction) graphs. All algorithms in `source/baseline_models/` rely on OGB Dataloaders
+and process the graphs in OGB compatible format.
 
 ## Baseline Instruction
 
@@ -122,7 +129,17 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 
 Go to `./VesselGraph/source/baseline_models/link_prediction/` and select a `MODEL` directory to run
 
-e.g. to run GNN, one needs to use the follwoeing `python3 gnn.py --dataset DATASET_NAME`
+e.g. to run GNN, one needs to use the following `python3 gnn.py --dataset DATASET_NAME`.
+
+For the dataset name, we follow the OGB convention. For example, to run the BALBc_no1 whole brain with a spatial splitting strategy, and without edge features (edge attributes),
+use `python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`.
+
+We also provide a memory-friendly alternative (a selected Region of Interest of the entire graph). To run the models on the selected region of interest, 
+use `python3 gnn.py --dataset ogbl-link_vessap_roi3_spatial_no_edge_attr`.
+
+If you are unsure what options are available, simply run the following command that will list all available datasets:
+
+use `python3 gnn.py --dataset ogbl-xyz`.
 
 *Download Trained Weight*
 |Model Name | Checkpoint | 
@@ -142,7 +159,17 @@ SEAL |[download](https://syncandshare.lrz.de/getlink/fiGbhGhyYFCyqGfnWqsjKbHb/SE
 
 Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
 
-e.g. to run GNN, one need to use the following `python3 gnn.py --test_only --dataset DATASET_NAME`
+e.g. to run GNN, one needs to use the following `python3 gnn.py --test_only --dataset DATASET_NAME`
+
+For the dataset name, we follow the OGB convention. For example, to run the BALBc_no1 whole brain with a spatial splitting strategy, and without edge features (edge attributes),
+use `python3 gnn.py --dataset ogbn-BALBc_no1_spatial_no_edge_attr`.
+
+We also provide a memory-friendly alternative (a selected Region of Interest of the entire graph). To run the models on the selected region of interest, 
+use `python3 gnn.py --dataset ogbn-node_vessap_roi3_spatial_no_edge_attr`.
+
+If you are unsure what options are available, simply run the following command that will list all available datasets:
+
+use `python3 gnn.py --dataset ogbn-xyz`.
 
 #### 2. Node Classification task
 

@@ -50,9 +50,10 @@ class NodeVesselGraph(InMemoryDataset):
 
     available_datasets = {
 
-        'synthetic': {'folder': 'synthetic.zip',
-                      'url': 'https://syncandshare.lrz.de/dl/fiYbEo8Vv1mpHWtT2ShRqB3i/synthetic.zip',
-                      'AlanBrainAtlas': False},
+        'synthetic': {'folder':'synthetic.zip',
+                      'url':'https://syncandshare.lrz.de/dl/fiYbEo8Vv1mpHWtT2ShRqB3i/synthetic.zip',
+                      'AlanBrainAtlas':False},
+
         'BALBc_no1': {'folder': 'BALBc_no1.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip',
                       'AlanBrainAtlas': False},
@@ -63,14 +64,14 @@ class NodeVesselGraph(InMemoryDataset):
                       'url': 'https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip',
                       'AlanBrainAtlas': False},
         'C57BL_6_no1': {'folder': 'C57BL_6_no1.zip',
-                        'url': 'https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip',
-                        'AlanBrainAtlas': False},
+                     'url': 'https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip',
+                     'AlanBrainAtlas': False},
         'C57BL_6_no2': {'folder': 'C57BL_6_no2.zip',
-                        'url': 'https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip',
-                        'AlanBrainAtlas': False},
+                     'url': 'https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip',
+                     'AlanBrainAtlas': False},
         'C57BL_6_no3': {'folder': 'C57BL_6_no3.zip',
-                        'url': 'https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip',
-                        'AlanBrainAtlas': False},
+                     'url': 'https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip',
+                     'AlanBrainAtlas': False},
         'CD1-E_no1': {'folder': 'CD1-E-no1.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip',
                       'AlanBrainAtlas': False},
@@ -81,10 +82,13 @@ class NodeVesselGraph(InMemoryDataset):
                       'url': 'https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip',
                       'AlanBrainAtlas': False},
 
+        ## selected regions of interest
+        'node_vessap_roi1':{'folder': 'node_vessap_roi1.zip',
+            'url': 'https://syncandshare.lrz.de/dl/fi8w9EY1crCyP5aQ7nVpmWKF/node_vessap_roi1.zip',
+            'AlanBrainAtlas': False},
         'node_vessap_roi3': {'folder': 'node_vessap_roi3.zip',
-                             'url': 'https://syncandshare.lrz.de/getlink/fi7xc8QNVS7N36jNqTkqezaM/node_vessap_roi3.zip',
-                             'AlanBrainAtlas': False},
-
+            'url': 'https://syncandshare.lrz.de/dl/fiP4SFHzcU6Qkdm9Mbi16pQg/node_vessap_roi3.zip',
+            'AlanBrainAtlas': False},
     }
 
     def __init__(self, root, name, transform=None, pre_transform=None,

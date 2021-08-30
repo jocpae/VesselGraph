@@ -87,18 +87,12 @@ class LinkVesselGraph(InMemoryDataset):
                       'AlanBrainAtlas': False},
 
         ## selected regions of interest
-        'link_italo': {'folder':'italo.zip',
-                       'url':'https://syncandshare.lrz.de/dl/fiNvUXKu88Cz8dEZPEaoghgS/link_italo.zip',
-                       'AlanBrainAtlas':False},
         'link_vessap_roi1':{'folder': 'link_vessap_roi1.zip',
-             'url': 'https://syncandshare.lrz.de/dl/fiAbFXpUsvjh9HSKh58Tb5kR/link_vessap_roi1.zip',
-             'AlanBrainAtlas': False},
-        'link_vessap_roi2': {'folder': 'link_vessap_roi2.zip',
-                             'url': 'https://syncandshare.lrz.de/dl/fiAbFXpUsvjh9HSKh58Tb5kR/link_vessap_roi1.zip',
-                             'AlanBrainAtlas': False},
+            'url': 'https://syncandshare.lrz.de/dl/fiWes5GoXWV1AJNVGWbK34cr/link_vessap_roi1.zip',
+            'AlanBrainAtlas': False},
         'link_vessap_roi3': {'folder': 'link_vessap_roi3.zip',
-                             'url': ' https://syncandshare.lrz.de/dl/fiHEU7AtcJUBKD2gTamqG9Lp/link_vessap_roi3.zip',
-                          'AlanBrainAtlas': False},
+            'url': 'https://syncandshare.lrz.de/dl/fiKNpy5GZTwzfYjHnAJ1QgLP/link_vessap_roi3.zip',
+            'AlanBrainAtlas': False},
     }
  
     def __init__(self, root, name, splitting_strategy='spatial',

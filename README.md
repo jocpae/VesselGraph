@@ -45,7 +45,7 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 #### Download Dataset
 |Dataset Name | Unprocessed | Preprocessed |
 |-----|-------------|--------------|
-|BALBc_no1|[download](https://syncandshare.lrz.de/dl/fiCCEay5icibQNoNw57HS97/vessap_brain_graphs/raw_dataset/BALBc_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
+|BALBc_no1|[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 |BALBc_no2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
 BALBc_no3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
 C57BL_6_no1  |[download]() |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
@@ -69,9 +69,21 @@ Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_at
 #### 4. Convert to Pytorch-Geometric Dataloader
 Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-rediction and node-classification task.
 #### 5. Convert to OGB Dataloader
+1. **For Graph** $\mathcal{G}$
+
+- **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/link_prediction/python3 generate_ogbl_dataset.py`
+
+- **DATA SPLIT:** The train/validation/test split can be set using the function `./source/ogb_dataset/link_prediction/vesap_utils.py`
+
 - Got to `./source/ogb_dataset/link_prediction/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above and `--splitting_strategy` either `random` or `spatial`
 
 - Subsequently run `update_ogbl_master.sh` for compileing the ogb repository locally
+
+2. **For Line Graph** $L(\mathcal{G})$
+
+- **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/node_prediction/generate_ogbn_dataset.py`
+
+- **DATA SPLIT:** The train/validation/test split can be set by modifying `./source/ogb_dataset/node_prediction/generate_ogbn_dataset.py`
 
 - Go to `./source/ogb_dataset/node_classification/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above
 
@@ -88,6 +100,7 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 ```
 - Subsequently run `update_ogbn_master.sh` for node-classification task.
 
+
 ## Dataloader Instruction
 
 #### 1. OGB Dataloader
@@ -98,7 +111,50 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 
 #### 1. Link Prediction task
 
+1. **Training**
+
+Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
+
+e.g. to run GNN, one need to use the follwoeing `python3 gnn.py --dataset DATASET_NAME`
+
+*Download Trained Weight*
+|Model Name | Checkpoint | 
+-----|---------------
+Adamic Adar|[download]()
+Common Neighbors |[download]()
+Resource Allocation |[download]()
+Matrix Factorization  |[download]()
+GCN GCN   |[download]()
+GCN GCN + embeddings |[download]()
+GCN SAGE + embeddings |[download]()
+GCN SAGE |[download]()
+SEAL |[download]()
+
+2. **Testing**
+
+Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
+
+e.g. to run GNN, one need to use the follwoeing `python3 gnn.py --test_only --dataset DATASET_NAME`
+
 #### 2. Node Classificatio task
+
+1. **Training**
+
+
+*Download Trained Weight*
+|Model Name | Checkpoint | 
+-----|---------------
+GCN|[download]()
+GraphSAGE |[download]()
+GraphSAINT |[download]()
+SIGN |[download]()
+Cluster-GCN |[download]()
+MLP|[download]()
+SpecMLP-W + C\&S |[download]()
+SpecMLP-W + C\&S + N2Vec|[download]()
+
+2. **Testing**
+
 
 ## Contribute 
 
@@ -113,4 +169,4 @@ We are a living and continously maintained repository! Therefore, we welcome con
 ## Link to the Baseline Models
 1. 
 2. 
-3.
+3. 

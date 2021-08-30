@@ -1,9 +1,9 @@
 import os
 import os.path as osp
 import sys
-sys.path.insert(0, '../')
+
 sys.path.insert(0, '../../')
-sys.path.insert(0, '../../ogb')
+
 
 import torch
 import numpy as np
@@ -114,7 +114,7 @@ saver.copy_mapping_dir(mapping_path)
 # Save task information by calling saver.save_task_info(task_type, eval_metric, num_classes = num_classes).
 # eval_metric is used to call Evaluator (c.f. here). 
 # You can reuse one of the existing metrics, or you can implement your own by creating a pull request
-saver.save_task_info(task_type = 'multiclass classification', eval_metric = 'acc', num_classes = len(class_boundaries + 1))
+saver.save_task_info(task_type = 'multiclass classification', eval_metric = 'acc', num_classes = len(class_boundaries) + 1)
 
 # step 7
 

@@ -3,10 +3,8 @@
 import os
 import os.path as osp
 import sys
-import sys
-sys.path.insert(0, '../')
-sys.path.insert(0, '../../')
-sys.path.insert(0, '../../ogb')
+
+sys.path.append("../../")
 
 import torch
 import numpy as np
@@ -15,16 +13,9 @@ import scipy
 import argparse
 import networkx as nx
 import torch_geometric.transforms as T
-from utils import *
+
 from pytorch_dataset.link_dataset import LinkVesselGraph
 from ogb.io import DatasetSaver
-
-def myprint(d):
-    for k, v in d.items():
-        if isinstance(v, dict):
-            myprint(v)
-        else:
-            print("{0} : {1}".format(k, v.shape))
 
 # step 1
 
@@ -34,22 +25,30 @@ def myprint(d):
 
 parser = argparse.ArgumentParser(description='generate OGB Link Prediction Dataset')
 parser.add_argument('--dataset', help='Dataset name (without ogbl-).', type=str,required=True)
-parser.add_argument('--no_edge_attr', action='store_true', help="whether to consider edge features in the dataset.")
+parser.add_argument('--use_edge_attr', action='store_true', help="whether to consider edge features in the dataset.")
+parser.add_argument('--use_atlas', action='store_true', help="whether to consider Alan Brain Atlas region as node feature.")
 parser.add_argument('--splitting_strategy', help='Splitting Strategy: random or spatial.', type=str,required=True)
 parser.add_argument('--number_of_workers', type=str, default=4)
+parser.add_argument('--data_root_dir', type=str, default='data')
 
 args = parser.parse_args()
-dataset_name = 'ogbl-' + args.dataset + '_' + args.splitting_strategy # e.g. ogbl-italo
-if args.no_edge_attr:
-    dataset_name +=  '_no_edge_attr' #+ '_no_atlas'
+dataset_name = 'ogbl-' + args.dataset + '_' + args.splitting_strategy # e.g. ogbl-BALBc_no1_spatial
+if args.use_edge_attr:
+    dataset_name +=  '_edge_attr' 
 else:
-    dataset_name +=  '_edge_attr' #+ '_no_atlas'
+    dataset_name +=  '_no_edge_attr' 
+
+if args.use_atlas:
+    dataset_name +=  '_atlas'
+
 
 saver = DatasetSaver(dataset_name = dataset_name, is_hetero = False, version = 1)
 
-use_edge_attr = False if args.no_edge_attr else True
+use_edge_attr = True if args.use_edge_attr else False
+use_atlas = True if args.use_atlas else False
 
-print(use_edge_attr)
+print("Using edge attributes: ", use_edge_attr)
+print("Using atlas node attributes: ", use_atlas)
 
 # seeding for reproducible result
 np.random.seed(12)
@@ -57,10 +56,12 @@ np.random.seed(12)
 # step 2:
 # Create graph_list, storing your graph objects, and call saver.save_graph_list(graph_list).
 # Graph objects are dictionaries containing the following keys.
-print(args.dataset)
 
 # load PyTorch Geometrics Graph
-dataset = LinkVesselGraph(root='data/'+args.splitting_strategy, name=args.dataset, splitting_strategy=args.splitting_strategy, number_of_workers = args.number_of_workers) # subset
+dataset = LinkVesselGraph(root=os.path.join(args.data_root_dir, args.splitting_strategy), 
+        name=args.dataset, splitting_strategy=args.splitting_strategy,
+        number_of_workers = args.number_of_workers)
+
 data = dataset[0]  # Get the first graph object.
 
 print(f'Dataset: {dataset}:')
@@ -150,8 +151,12 @@ dataset = LinkPropPredDataset(dataset_name, meta_dict = meta_dict)
 print(dataset[0])
 data = dataset[0]
 split_edge = dataset.get_edge_split()
-print(split_edge)
 print(split_edge['train']['edge'].shape)
+print(split_edge['test']['edge'].shape)
+print(split_edge['valid']['edge'].shape)
+print(split_edge['train']['edge_neg'].shape)
+print(split_edge['test']['edge_neg'].shape)
+print(split_edge['valid']['edge_neg'].shape)
 print(data['edge_index'].shape)
 
 # zip and clean up

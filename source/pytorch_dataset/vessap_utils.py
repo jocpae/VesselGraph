@@ -154,7 +154,6 @@ def custom_train_test_split_edges(data, val_ratio: float = 0.05, test_ratio: flo
 
 # spatial sampling of positive links does not make any sense at all!
 
-
 def positive_train_test_split_edges(data, val_ratio: float = 0.05, test_ratio: float = 0.1):
     r"""Splits the edges of a :class:`torch_geometric.data.Data` object
     into positive and negative train/val/test edges.
@@ -237,7 +236,7 @@ def sample(num_samples,set_nodes,delta,seed):
 
     np.random.seed(seed+200)
 
-    for i in tqdm(range(0, int(math.floor(1.2*num_samples)))):
+    for i in tqdm(range(0, int(math.floor(1.5*num_samples)))):
 
         num_nodes = len(set_nodes)
 
@@ -278,6 +277,7 @@ def negative_sampling(all_undirectional_edges, df_edges, data, set_pos_edge, n_t
 
     num_samples = n_train+n_test+n_val
 
+
     # seed random functions
     np.random.seed(123) # init only once (not in loop)
     torch.manual_seed(123)
@@ -285,10 +285,12 @@ def negative_sampling(all_undirectional_edges, df_edges, data, set_pos_edge, n_t
 
     # determine spatial criteria
     mean = df_edges["distance"].mean()
+
     two_sigma = 2* df_edges["distance"].std()
     delta = mean + two_sigma
     print(delta)
     #median = df_edges["distance"].median()
+
 
     # contains all possible node ids of the set
     set_nodes = np.unique(set_pos_edge.numpy().flatten()) # contains all possible nodes of the set, unique as edges are undirected
@@ -332,6 +334,17 @@ def negative_sampling(all_undirectional_edges, df_edges, data, set_pos_edge, n_t
 
     print("Shape of actual different edges",edge_list.shape)
 
+    print("Permute - Lifesaver!")
+    print("Permute - Lifesaver!")
+    print("Permute - Lifesaver!")
+    perm = torch.randperm(edge_list.shape[0])
+    print("Permute - Lifesaver!")
+    print("Permute - Lifesaver!")
+    print("Permute - Lifesaver!")
+
+    # this line of code is essential!
+    edge_list = edge_list[perm]
+
     train_set = edge_list[:n_train,:]
     val_set = edge_list[n_train:n_train+n_val,:]
     test_set = edge_list[n_train+n_val:,:]
@@ -343,4 +356,5 @@ def negative_sampling(all_undirectional_edges, df_edges, data, set_pos_edge, n_t
     data.val_neg_edge_index = torch.from_numpy(np.array(val_set).T)
  
     return data
+
 

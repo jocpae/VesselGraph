@@ -49,6 +49,7 @@ class NodeVesselGraph(InMemoryDataset):
     # file structure is dataset_name/folder_of_file/folder_of_file_{nodes,edges}.csv
 
     available_datasets = {
+
         'synthetic': {'folder': 'synthetic.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiYbEo8Vv1mpHWtT2ShRqB3i/synthetic.zip',
                       'AlanBrainAtlas': False},
@@ -79,13 +80,11 @@ class NodeVesselGraph(InMemoryDataset):
         'CD1-E_no3': {'folder': 'CD1-E-no3.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip',
                       'AlanBrainAtlas': False},
-        'node_italo': {'folder': 'node_italo.zip',
-                       'url': 'https://syncandshare.lrz.de/dl/fiJwLeTuDzphqM7f19vZh53E/node_italo.zip',
-                       'AlanBrainAtlas': False},
 
-        'node_vessap_roi1':{'folder': 'node_vessap_roi1.zip',
-                       'url': 'https://syncandshare.lrz.de/dl/fiLBTtuPpqwx3vg5gVbhCZLX/node_vessap_roi1.zip',
-                       'AlanBrainAtlas': False},
+        'node_vessap_roi3': {'folder': 'node_vessap_roi3.zip',
+                             'url': 'https://syncandshare.lrz.de/getlink/fi7xc8QNVS7N36jNqTkqezaM/node_vessap_roi3.zip',
+                             'AlanBrainAtlas': False},
+
     }
 
     def __init__(self, root, name, transform=None, pre_transform=None,

@@ -33,7 +33,6 @@ class LinkVesselGraph(InMemoryDataset):
         splitting_strategy (string): Random or spatial splitting.
             If :obj:`"random"`, random splitting strategy.
             If :obj:`"spatial"`, spatial splitting strategy.
-            If :obj:`"combined"`, 50% / 50% random and spatially sampled links.
         transform (callable, optional): A function/transform that takes in an
             :obj:`torch_geometric.data.Data` object and returns a transformed
             version. The data object will be transformed before every access.
@@ -54,6 +53,7 @@ class LinkVesselGraph(InMemoryDataset):
     # file structure is dataset_name/folder_of_file/folder_of_file_{nodes,edges}.csv
 
     available_datasets = {
+
         'synthetic': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fiYbEo8Vv1mpHWtT2ShRqB3i/synthetic.zip',
                       'AlanBrainAtlas':False},
@@ -93,7 +93,7 @@ class LinkVesselGraph(InMemoryDataset):
         'link_vessap_roi1':{'folder': 'link_vessap_roi1.zip',
              'url': 'https://syncandshare.lrz.de/dl/fiAbFXpUsvjh9HSKh58Tb5kR/link_vessap_roi1.zip',
              'AlanBrainAtlas': False},
-        'link_vessap_roi2': {'folder': 'link_vessap_roi2.zip', # TODO: check bug here
+        'link_vessap_roi2': {'folder': 'link_vessap_roi2.zip',
                              'url': 'https://syncandshare.lrz.de/dl/fiAbFXpUsvjh9HSKh58Tb5kR/link_vessap_roi1.zip',
                              'AlanBrainAtlas': False},
         'link_vessap_roi3': {'folder': 'link_vessap_roi3.zip',
@@ -108,9 +108,9 @@ class LinkVesselGraph(InMemoryDataset):
                 use_atlas: bool = False,
                 transform=None, pre_transform=None):
  
-        self.name = name#.lower()
+        self.name = name
 
-        print(self.available_datasets.keys())
+        print("Available Datasets are:", self.available_datasets.keys())
 
         # check if dataset name is valid
         assert self.name in self.available_datasets.keys()
@@ -251,7 +251,7 @@ class LinkVesselGraph(InMemoryDataset):
             del edge_array
             del edge_attr_array
 
-            if self.splitting_strategy == 'spatial': # only edges in spatial proximity
+            if self.splitting_strategy == 'spatial': # sample negative edges only in spatial proximity of nodes (mean + 2sigma)
 
                 data = positive_train_test_split_edges(data, val_ratio=self.val_ratio, test_ratio = self.test_ratio)
 
@@ -264,35 +264,12 @@ class LinkVesselGraph(InMemoryDataset):
                 data = negative_sampling(data.edge_index_undirected,df_edges, data, data.edge_index_undirected, n_train, n_test, n_val,self.number_of_workers)
 
 
-            elif self.splitting_strategy == 'combined': # 50 / 50 split of random samples, and samples in spatial proximity
-
-                data = custom_train_test_split_edges(data, val_ratio=self.val_ratio, test_ratio = self.test_ratio)
-
-                # 50 % in node surroundings
-                # 50 % random samples of complete brain
-
-                data.train_neg_edge_index_spatial = negative_sampling(data.edge_index_undirected,df_edges,data,data.train_pos_edge_index, data.train_pos_edge_index.shape[1] /2)
-                data.val_neg_edge_index_spatial = negative_sampling(data.edge_index_undirected ,df_edges,data,data.val_pos_edge_index, data.val_pos_edge_index.shape[1] /2)
-                data.test_neg_edge_index_spatial = negative_sampling(data.edge_index_undirected , df_edges,data,data.test_pos_edge_index, data.test_pos_edge_index.shape[1] /2)
-
-                # replace 50% of the random links by spatial links
-
-                data.train_neg_edge_index[:, 0:int(data.train_neg_edge_index_spatial.shape[1])] = data.train_neg_edge_index_spatial
-                data.test_neg_edge_index[:, 0:int(data.test_neg_edge_index_spatial.shape[1])] = data.test_neg_edge_index_spatial
-                data.val_neg_edge_index[:, 0:int(data.val_neg_edge_index_spatial.shape[1])] = data.val_neg_edge_index_spatial
-
-                del data.val_neg_edge_index_spatial
-                del data.test_neg_edge_index_spatial
-                del data.train_neg_edge_index_spatial
-
-
             elif self.splitting_strategy == 'random': # only randomly sampled edges
 
                 data = custom_train_test_split_edges(data, val_ratio=self.val_ratio, test_ratio = self.test_ratio)
 
             else:
                 raise ValueError('Splitting strategy unknown!')
-
 
             if self.use_edge_attr == False:
                 del data.train_pos_edge_attr

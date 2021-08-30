@@ -1,0 +1,3 @@
+python bash_script_generation_node2vec.py
+cd ..
+sh hyper_param_tunning-use_embedd_n2vec/parallelize_mlp_cs_node2vec.sh

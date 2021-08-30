@@ -1,3 +1,0 @@
-export CUDA_DEVICE_ORDER=PCI_BUS_ID
-sh gnn_gcn_parallelize.sh
-sh gnn_sage_parallelize.sh

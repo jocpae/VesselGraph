@@ -1,9 +1,9 @@
 import os
 import os.path as osp
 import sys
-sys.path.insert(0, '../')
+
 sys.path.insert(0, '../../')
-sys.path.insert(0, '../../ogb')
+
 
 import torch
 import numpy as np
@@ -31,13 +31,14 @@ args = vars(parser.parse_args())
 ds_name = args['dataset']
 
 dataset_name = 'ogbn-' + ds_name # e.g. ogbl-italo
-saver = DatasetSaver(dataset_name = dataset_name, is_hetero = False, version = 1)
+
+# saver = DatasetSaver(dataset_name = dataset_name, is_hetero = False, version = 1)
 
 dataset = NodeVesselGraph(root='data', name=ds_name, pre_transform=T.LineGraph(force_directed=False))
 data = dataset[0]  # Get the first graph object.
 graph_list = []
 graph = dict()
-
+data.x /= 2
 # Define Index
 # assign id to edge_attr_keys
 indexed_edge_attr_keys = [f'{i}: {c}' for i, c in enumerate(data.edge_attr_keys)]
@@ -58,14 +59,17 @@ if class_type == 'bc':
     num_classes = int(input("Enter number of desired class: ")) # choose wisely, this is a random guess
     est = KBinsDiscretizer(n_bins=num_classes, encode='ordinal', strategy='quantile')#approximately the same number of samples, balanced set!
     labels = est.fit_transform(labels)
-    dataset_name = dataset_name + '_balanced_classes'
+
 elif class_type == 'pb':
     classes = np.zeros(labels.shape)
     class_boundaries = np.array(input("Enter desired radius boundaries as pixel values (Use \",\" to separate them): ").split(",")).astype(np.float)
     for class_id, boundary in enumerate(class_boundaries, 1):
         classes[labels > boundary] = class_id
     labels = classes
-    dataset_name = dataset_name + '_boundary_classes'
+
+dataset_name = dataset_name + f'_{class_type}_{data.edge_attr_keys[index]}'
+
+saver = DatasetSaver(dataset_name = dataset_name, is_hetero = False, version = 1)
 
 # step 2:
 # Create graph_list, storing your graph objects, and call saver.save_graph_list(graph_list).
@@ -86,7 +90,7 @@ saver.save_target_labels(labels)
 
 split_idx = dict()
 num_data = len(labels)
-np.random.seed(12)
+np.random.seed(94)
 perm = np.random.permutation(num_data)
 split_idx['train'] = torch.from_numpy(perm[:int(0.8*num_data)])
 split_idx['valid'] = torch.from_numpy(perm[int(0.8*num_data): int(0.9*num_data)])
@@ -111,6 +115,7 @@ saver.copy_mapping_dir(mapping_path)
 # Save task information by calling saver.save_task_info(task_type, eval_metric, num_classes = num_classes).
 # eval_metric is used to call Evaluator (c.f. here). 
 # You can reuse one of the existing metrics, or you can implement your own by creating a pull request
+
 saver.save_task_info(task_type = 'multiclass classification', eval_metric = 'acc', num_classes = len(class_boundaries + 1))
 
 # step 7

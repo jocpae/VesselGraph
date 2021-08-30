@@ -168,9 +168,9 @@ def calculate_weight_vector(labels, return_unique_labels=False):
 
 def main():
     # get start time
-    start_time = time.clock()
+    start_time = time.time()
 
-    parser = argparse.ArgumentParser(description='ogbn-italo (SIGN)')
+    parser = argparse.ArgumentParser(description='ogbn- SIGN')
     parser.add_argument('--device', type=int, default=0)
     parser.add_argument('--log_steps', type=int, default=1)
     parser.add_argument('--num_layers', type=int, default=3)

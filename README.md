@@ -10,7 +10,7 @@ This new dataset paves a pathway towards translating advanced graph learning res
 
 ## Features
 - *Whole brain vessel graphs:* are the key for research questions to Biology and Neuroscience, including Neuronal organisation, stroke modeling and hemodynamics
-- *Ready-to use and large set of data:* We are providing whole brain graphs from different research groups and will
+- *Ready-to use and large set of data:* We are providing whole brain graphs from different research groups and will continously update our dataset.
 - *Data-Loaders:* We are providing extensive functions to readily process our data for machine learning research, including the community standard OGB and pyG dataloaders
 - *Benchmarks:* We benchmarked a comprehensive set of state of the art methods in link prediction and node classification; we provide all codes and detailed instructions
 - *Open-source, “living” initiative:* VesselGraph is an open source initiative. We want to expand our datasets as soon as other brain imaging becomes publicly available
@@ -32,6 +32,12 @@ The data is licensed under a <a rel="license" href="http://creativecommons.org/l
 * [Dataloader](#dataloader-instruction)
 * [Baselines](#baseline-instruction)
 
+## Instructions
+
+We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automaically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
+If you would rather work with customized solutions (different datasplits, etc.), we provide you with all steps of our pipeline.
+
+In the following section, we describe how our graphs have been built. 
 
 ## Dataset Description
 #### 1. Generate Raw Graph fron Segmentation using Voreen
@@ -66,7 +72,7 @@ Synth. Graph 5 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21Aii
 #### 3. Generate Atlas features
 Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`
 #### 4. Convert to Pytorch-Geometric Dataloader
-Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-rediction and node-classification task.
+Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-prediction and node-classification task.
 #### 5. Convert to OGB Dataloader
 1. **For Graph** $\mathcal{G}$
 
@@ -76,7 +82,7 @@ Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.p
 
 - Got to `./source/ogb_dataset/link_prediction/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above and `--splitting_strategy` either `random` or `spatial`
 
-- Subsequently run `update_ogbl_master.sh` for compileing the ogb repository locally
+- Subsequently run `update_ogbl_master.sh` for compiling the ogb repository locally.
 
 2. **For Line Graph** $L(\mathcal{G})$
 
@@ -85,6 +91,8 @@ Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.p
 - **DATA SPLIT:** The train/validation/test split can be set by modifying `./source/ogb_dataset/node_prediction/generate_ogbn_dataset.py`
 
 - Go to `./source/ogb_dataset/node_classification/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above
+
+- Subsequently run `update_ogbn_master.sh` for compiling the ogb repository locally.
 
 - We use the following options
 
@@ -112,9 +120,9 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 
 1. **Training**
 
-Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
+Go to `./VesselGraph/source/baseline_models/link_prediction/` and select a `MODEL` directory to run
 
-e.g. to run GNN, one need to use the follwoeing `python3 gnn.py --dataset DATASET_NAME`
+e.g. to run GNN, one needs to use the follwoeing `python3 gnn.py --dataset DATASET_NAME`
 
 *Download Trained Weight*
 |Model Name | Checkpoint | 
@@ -167,6 +175,9 @@ We are a living and continously maintained repository! Therefore, we welcome con
 3. Synthetic Dataset: [[website](https://github.com/giesekow/deepvesselnet/wiki/Datasets)][[paper](https://doi.org/10.1016/j.media.2012.04.009)]
 
 ## Link to the Baseline Models
-1. 
-2. 
-3. 
+1. GCN: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1609.02907)]
+2. SAGE: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1706.02216)]
+3. GraphSAINT: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1907.04931)]
+4. SIGN: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/2004.11198)]
+5. SpecMLP: [[website](https://github.com/ytchx1999/PyG-ogbn-products/tree/main/spectral%2Bmlp%2Bcs)][[paper](https://arxiv.org/abs/2010.13993)]
+6. SEAL: [[website](https://github.com/facebookresearch/SEAL_OGB)][[paper](https://arxiv.org/pdf/2010.16103.pdf)]

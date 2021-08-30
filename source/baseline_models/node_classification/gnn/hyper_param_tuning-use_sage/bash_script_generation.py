@@ -6,7 +6,7 @@ parallel_starts = 16
 
 available_gpus = ['3,0', '0,3']
 # args dict
-args_dict = {'ds_name': 'node_vessap_roi3_pb_minRadiusAvg',
+args_dict = {'dataset': 'node_vessap_roi3_pb_minRadiusAvg',
              'log_dir': '../tensorboard_logs',
              'device': 1,
              'log_steps': 1,
@@ -32,7 +32,7 @@ hparam_dict = {
 ex_prefix = 'ex'
 # check if logging root directory exists
 # define log dir path
-log_dir = os.path.join(args_dict['log_dir'], args_dict['ds_name'], alg_name)
+log_dir = os.path.join(args_dict['log_dir'], args_dict['dataset'], alg_name)
 if not os.path.exists(log_dir):
     # if not generate it
     os.makedirs(log_dir)

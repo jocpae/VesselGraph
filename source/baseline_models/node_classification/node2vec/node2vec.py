@@ -38,7 +38,7 @@ def main():
     parser.add_argument('--log_steps', type=int, default=1)
     parser.add_argument('--log_dir', type=str, default='../tensorboard_logs')
     parser.add_argument('--target_dir', type=str, default='embeddings')
-    parser.add_argument('--ds_name', type=str, required=True)
+    parser.add_argument('--dataset', type=str, required=True)
     parser.add_argument('--n_par_combs', type=int, default=0)
     parser.add_argument('--curr_param_idx', type=int, default=0)
     parser.add_argument('--n_stop_train', type=int, default=160)
@@ -48,12 +48,12 @@ def main():
     device = f'cuda:{args.device}' if torch.cuda.is_available() else 'cpu'
     device = torch.device(device)
 
-    dataset = PygNodePropPredDataset(name=f'ogbn-{args.ds_name}')
+    dataset = PygNodePropPredDataset(name=args.dataset)
     data = dataset[0]
     if not os.path.exists(args.target_dir):
         # if not generate it
         os.makedirs(args.target_dir)
-    file_name = os.path.join(args.target_dir, f'{args.ds_name}_embedding.pt')
+    file_name = os.path.join(args.target_dir, f'{args.dataset}_embedding.pt')
     model = Node2Vec(data.edge_index, args.embedding_dim, args.walk_length,
                      args.context_size, args.walks_per_node,
                      sparse=True).to(device)
@@ -71,7 +71,7 @@ def main():
     ex_prefix = 'ex'
     # check if logging root directory exists
     # define log dir path
-    log_dir = os.path.join(args.log_dir, args.ds_name, alg_name)
+    log_dir = os.path.join(args.log_dir, args.dataset, alg_name)
     if not os.path.exists(log_dir):
         # if not generate it
         os.makedirs(log_dir)

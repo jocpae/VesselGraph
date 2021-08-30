@@ -219,12 +219,13 @@ def main():
     parser.add_argument("--use_embed", action="store_true")
     parser.add_argument("--use_cached", action="store_true")
     parser.add_argument('--log_dir', type=str, default='../tensorboard_logs')
-    parser.add_argument('--ds_name', type=str, required=True)
+    parser.add_argument('--dataset', type=str, required=True)
     parser.add_argument('--n_par_combs', type=int, default=0)
     parser.add_argument('--curr_param_idx', type=int, default=0)
     parser.add_argument('--n_stop_train', type=int, default=160)
     parser.add_argument('--ex', type=int, default=-1)
     parser.add_argument('--model_states', type=str)
+    parser.add_argument('--test_only',action='store_true')
     args = parser.parse_args()
     print(args, flush=True)
 
@@ -254,11 +255,11 @@ def main():
                    'roc_auc_ovo_weighted': {'function': skm.roc_auc_score,
                                             'kwargs': {'multi_class': 'ovo', 'average': 'weighted'}}}
 
-    dataset = PygNodePropPredDataset(name=f'ogbn-{args.ds_name}',
+    dataset = PygNodePropPredDataset(name=args.dataset,
                                      root='./dataset/',
                                      transform=T.ToSparseTensor())
     print(dataset, flush=True)
-    # evaluator = Evaluator(name=f'ogbn-{args.ds_name}')
+    # evaluator = Evaluator(name=f'ogbn-{args.dataset}')
     split_idx = dataset.get_idx_split()
     data = dataset[0]
     print(data, flush=True)
@@ -268,7 +269,7 @@ def main():
     # generate and add embeddings
     if args.use_embed:
         if args.use_cached:
-            embeddings = torch.load(f'embeddings/{args.ds_name}_embedding.pt', map_location='cpu')
+            embeddings = torch.load(f'embeddings/{args.dataset}_embedding.pt', map_location='cpu')
         else:
             embeddings = spectral(data, 'products')
         data.x = torch.cat([data.x, embeddings], dim=-1)
@@ -304,7 +305,7 @@ def main():
     ex_prefix = 'ex'
     # check if logging root directory exists
     # define log dir path
-    log_dir = os.path.join(args.log_dir, args.ds_name, alg_name)
+    log_dir = os.path.join(args.log_dir, args.dataset, alg_name)
     if not os.path.exists(log_dir):
         # if not generate it
         os.makedirs(log_dir)
@@ -378,6 +379,23 @@ def main():
         print('', flush=True)
 
         best_val_acc = 0
+
+        if args.test_only:
+            metric_res_dict, out = extended_test(model, x, y,
+                                                     {'train': train_idx, 'valid': val_idx, 'test': test_idx},
+                                                     metric_dict, unique_labels)
+
+            result = [list(metric_res_dict['train'].values())[0], list(metric_res_dict['valid'].values())[0],
+                        list(metric_res_dict['test'].values())[0]]
+
+            train_acc, val_acc, test_acc = result
+            print(
+            f'Train: {100 * train_acc:.2f}%, '
+            f'Valid: {100 * val_acc:.2f}% '
+            f'Test: {100 * test_acc:.2f}%')
+
+            exit()
+
         for epoch in range(1, args.epochs + 1):  ##
             loss = train(model, optimizer, x_train, criterion, y_train)
 

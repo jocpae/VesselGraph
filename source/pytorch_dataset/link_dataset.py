@@ -142,7 +142,7 @@ class LinkVesselGraph(InMemoryDataset):
             raw_file_names.add(osp.join(self.raw_dir, self.name, id, f'{id}_nodes_processed.csv'))
             raw_file_names.add(osp.join(self.raw_dir, self.name, id, f'{id}_edges_processed.csv'))
             if self.AlanBrainAtlas:
-                raw_file_names.add(osp.join(self.raw_dir, self.name, id, f'{id}_atlas.csv'))
+                raw_file_names.add(osp.join(self.raw_dir, self.name, id, f'{id}_atlas_processed.csv'))
 
         print(raw_file_names)
         return [raw_file_names]
@@ -197,7 +197,7 @@ class LinkVesselGraph(InMemoryDataset):
             # merge nodes and one hot encoded atlas labels
             if self.AlanBrainAtlas and self.use_atlas:
 
-                df_atlas = pd.read_csv(osp.join(self.raw_dir, self.name, id,f'{id}_nodes_atlas_processed.csv'),sep=';')
+                df_atlas = pd.read_csv(osp.join(self.raw_dir, self.name, id,f'{id}_atlas_processed.csv'),sep=';')
                 df_nodes = df_nodes.join(df_atlas)
                 data.node_attr_keys = ['pos_x','pos_y','pos_z','degree','isAtSampleBorder'] + list(df_atlas.columns.values)
 

@@ -579,7 +579,6 @@ if args.use_heuristic:
         with open(log_file, 'a') as f:
             print(key, file=f)
             loggers[key].print_statistics(f=f)
-    pdb.set_trace()
     exit()
 
 
@@ -624,7 +623,6 @@ if False:  # visualize some graphs
         nx.draw(G, node_size=node_size, arrows=True, with_labels=with_labels,
                 labels=labels)
         f.savefig('tmp_vis.png')
-        pdb.set_trace()
 
 dataset_class = 'SEALDynamicDataset' if args.dynamic_val else 'SEALDataset'
 val_dataset = eval(dataset_class)(
@@ -741,7 +739,6 @@ for run in range(args.runs):
                   f'Train: {100 * train_res:.2f}%, '
                   f'Valid: {100 * valid_res:.2f}%, '
                   f'Test: {100 * test_res:.2f}%')
-        pdb.set_trace()
         exit()
 
     if args.test_multiple_models:
@@ -771,7 +768,6 @@ for run in range(args.runs):
                 with open(log_file, 'a') as f:
                     print(key, file=f)
                     print(to_print, file=f)
-        pdb.set_trace()
         exit()
 
     # Training starts

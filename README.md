@@ -137,9 +137,21 @@ and process the graphs in OGB compatible format.
 
 Go to `./VesselGraph/source/baseline_models/link_prediction/` and select a `MODEL` directory to run
 
-e.g. to run GNN, one needs to use the following `python3 gnn.py --dataset DATASET_NAME`.
+Model Name | Script
+-----|---------------
+Adamic Adar|`python3 seal_link_pred.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_heuristic AA`
+Common Neighbors |`python3 seal_link_pred.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_heuristic CN`
+Resource Allocation |`python3 seal_link_pred.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_heuristic RA`
+Matrix Factorization |`python3 mf.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
+MLP|`python3 mlp.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr` 
+GCN GCN |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
+GCN GCN + embeddings |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_node_embedding`
+GCN SAGE + embeddings|`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_node_embedding --use_sage`
+GCN SAGE |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_sage`
+SEAL |`python3 seal_link_pred.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
 
-For the dataset name, we follow the OGB convention. For example, to run the BALBc_no1 whole brain with a spatial splitting strategy, and without edge features (edge attributes),
+
+For the dataset name, we follow the OGB convention. For example, to run the `BALBc_no1` whole brain with a spatial splitting strategy, and without edge features (edge attributes),
 use `python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`.
 
 We also provide a memory-friendly alternative (a selected Region of Interest of the entire graph). To run the models on the selected region of interest, 
@@ -149,42 +161,46 @@ If you are unsure what options are available, simply run the following command t
 
 use `python3 gnn.py --dataset ogbl-xyz`.
 
-*Download Trained Weight*
+2. **Testing**
+
+*Download Trained Weight* and place them in the respective model folder
 |Model Name | Checkpoint | 
 -----|---------------
 Adamic Adar|[heuristic, not applicable]
 Common Neighbors |[heuristic, not applicable]
 Resource Allocation |[heuristic, not applicable]
 Matrix Factorization |[download](https://syncandshare.lrz.de/getlink/fi2SY3S11Z1jdnvPnh5xn5RK/MF)
-MLP|[download](https://syncandshare.lrz.de/getlink/fi2SY3S11Z1jdnvPnh5xn5RK/MF)
+MLP|[download](https://syncandshare.lrz.de/getlink/fi9RWSLJ9Zmdbr1n74zDbZ9R/MLP)
 GCN GCN   |[download](https://syncandshare.lrz.de/getlink/fiLN8QNyXdHm3jNUkgTya3SA/GNN_GCN)
 GCN GCN + embeddings |[download](https://syncandshare.lrz.de/getlink/fiLiTAy7xgNJp69SyYjKj6jc/GNN_GCN_embeddings)
 GCN SAGE + embeddings |[download](https://syncandshare.lrz.de/getlink/fiEb3iZrrU15PGkNemiZLiXi/GNN_SAGE_embeddings)
 GCN SAGE |[download](https://syncandshare.lrz.de/getlink/fi2TtEzMKUSxastBvEGmUjzx/GNN_SAGE)
 SEAL |[download](https://syncandshare.lrz.de/getlink/fiGbhGhyYFCyqGfnWqsjKbHb/SEAL)
 
-2. **Testing**
-
 Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
 
-e.g. to run GNN, one needs to use the following `python3 gnn.py --test_only --dataset DATASET_NAME`
+e.g. to run GNN, one needs to use the following `python3 gnn.py --load_state_dict --test_only --dataset DATASET_NAME`
 
-For the dataset name, we follow the OGB convention. For example, to run the BALBc_no1 whole brain with minimum radius labels,
-use `python3 gnn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`.
-
-We also provide a memory-friendly alternative (a selected Region of Interest of the entire graph). To run the models on the selected region of interest, 
-use `python3 gnn.py --dataset ogbn-node_vessap_roi3_pb_minRadiusAvg`.
-
-If you are unsure what options are available, simply run the following command that will list all available datasets:
-
-use `python3 gnn.py --dataset ogbn-xyz`.
-
+The same applies for the other models
 #### 2. Node Classification task
 
 1. **Training**
+Go to `./VesselGraph/source/baseline_models/node_classification/` and select a `MODEL` directory to run
 
+Model Name | Script
+-----|---------------
+GCN | `python3 gnn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
+GraphSAGE | `python3 gnn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --use_sage`
+GraphSAINT | `python3 graph_saint.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
+SIGN | `python3 sign.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
+Cluster-GCN | `python3 cluster_gcn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
+MLP | `python3 mlp.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
+SpecMLP-W + C&S | `python3 mlp_cs.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
+SpecMLP-W + C&S + Node2Vec| `python3 mlp_cs.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --use_embed`
 
-*Download Trained Weight*
+2. **Testing**
+
+*Download Trained Weight* and place them in the respective model folder
 |Model Name | Checkpoint | 
 -----|---------------
 GCN|[download](https://syncandshare.lrz.de/getlink/fi7P51t9pk7Tm7gU83ABi7x2/gnn)
@@ -196,8 +212,11 @@ MLP|[download](https://syncandshare.lrz.de/getlink/fiH4GzQvCtS728iDec4mGWeq/mlp)
 SpecMLP-W + C\&S |[download](https://syncandshare.lrz.de/getlink/fiKJdZz19iAQCPmPxrFNPRQ9/mlp_cs)
 SpecMLP-W + C\&S + N2Vec|[download](https://syncandshare.lrz.de/getlink/fiWahsBTS6uAvEFFLqpzaThN/mlp_cs_node2vec)
 
-2. **Testing**
+Go to `./VesselGraph/source/baseline_models/node_classification/` and select go a `MODEL` directory to run
 
+e.g. to run GNN, one needs to use the following `python3 gnn.py --load_state_dict --test_only --dataset DATASET_NAME`
+
+The same applies for the other models
 
 ## Contribute 
 

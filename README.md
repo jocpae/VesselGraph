@@ -98,9 +98,9 @@ Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.p
 
 2. **For Line Graph** **L(G)**
 
-- **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/node_prediction/generate_ogbn_dataset.py`
+- **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/node_classification/generate_ogbn_dataset.py`
 
-- **DATA SPLIT:** The train/validation/test split can be set by modifying `./source/ogb_dataset/node_prediction/generate_ogbn_dataset.py`
+- **DATA SPLIT:** The train/validation/test split can be set by modifying `./source/ogb_dataset/node_classification/generate_ogbn_dataset.py`
 
 - Go to `./source/ogb_dataset/node_classification/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above
 

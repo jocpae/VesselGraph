@@ -412,9 +412,10 @@ parser.add_argument('--train_node_embedding', action='store_true',
 parser.add_argument('--pretrained_node_embedding', type=str, default=None, 
                     help="load pretrained node embeddings as additional node features")
 
-parser.add_argument('--log_dir',type=str)
-parser.add_argument('--n_par_combs',type=int)
-parser.add_argument('--curr_param_idx', type=int)
+parser.add_argument('--log_dir',type=str, default= "seal_log")
+parser.add_argument('--n_par_combs',type=int, default = 1) 
+parser.add_argument('--curr_param_idx', type=int, default = 1)
+
 
 # Testing settings
 parser.add_argument('--use_valedges_as_input', action='store_true')
@@ -428,6 +429,8 @@ parser.add_argument('--keep_old', action='store_true',
                     help="do not overwrite old files in the save directory")
 parser.add_argument('--continue_from', type=int, default=None, 
                     help="from which epoch's checkpoint to continue training")
+# Load pretrained model
+parser.add_argument('--load_state_dict',action='store_true')
 parser.add_argument('--test_only', action='store_true', 
                     help="only test without training")
 parser.add_argument('--test_multiple_models', action='store_true', 
@@ -727,6 +730,20 @@ for run in range(args.runs):
         )
         start_epoch = args.continue_from + 1
         args.epochs -= args.continue_from
+
+    if args.load_state_dict:
+
+        print("Loading submission state dictionaries")
+
+        append = 'neurips_state_dict_final_seal_'
+        model_name = append + 'model_checkpoint.pth'
+        optimizer_name = append + 'optimizer_checkpoint.pth'
+
+        model.load_state_dict(
+            torch.load(os.path.join(os.getcwd(),model_name), map_location=torch.device('cpu')))#,strict=False))
+
+        optimizer.load_state_dict(
+            torch.load(os.path.join(os.getcwd(),optimizer_name), map_location=torch.device('cpu')))#,strict=False))
     
     if args.test_only:
         results = test()

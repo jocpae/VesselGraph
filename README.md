@@ -50,6 +50,8 @@ If you would rather work with customized solutions (different datasplits, etc.),
 and OGB formats. In the following section, we describe how our graphs have been built. You are invited to skip this section if you prefer working with our preprocessed graphs.
 
 ## Dataset Description
+
+This is the description about how we prepared the dataset. The parameters are described as used in the paper
 #### 1. Generate Raw Graph fron Segmentation using Voreen
 Use [Voreen Graph Generation Tool](https://github.com/jqmcginnis/voreen) to make the `node_list` and `edge_list` from a segmentation volume.
 
@@ -84,7 +86,7 @@ Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_at
 #### 4. Convert to Pytorch-Geometric Dataloader
 Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-prediction and node-classification task.
 #### 5. Convert to OGB Dataloader
-1. **For Graph** $\mathcal{G}$
+1. **For Graph** **G**
 
 - **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/link_prediction/python3 generate_ogbl_dataset.py`
 
@@ -94,7 +96,7 @@ Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.p
 
 - Subsequently run `update_ogbl_master.sh` for compiling the ogb repository locally.
 
-2. **For Line Graph** $L(\mathcal{G})$
+2. **For Line Graph** **L(G)**
 
 - **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/node_prediction/generate_ogbn_dataset.py`
 
@@ -131,11 +133,15 @@ and process the graphs in OGB compatible format.
 
 ## Baseline Instruction
 
+All baseline model can be run out-of-the-box with the follwoing commands which automatically downloads the processed dataset.
+
 #### 1. Link Prediction task
 
-1. **Training**
+1.1 **Training**
 
-Go to `./VesselGraph/source/baseline_models/link_prediction/` and select a `MODEL` directory to run
+To create the node embeddings go to `VesselGraph/source/baseline_models/link_prediction/OGB_Node2Vec/` and run`python3 node2vec.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
+
+Subsequently go to`VesselGraph/source/baseline_models/link_prediction/` and enter a `MODEL` directory to run
 
 Model Name | Script
 -----|---------------
@@ -146,8 +152,8 @@ Matrix Factorization |`python3 mf.py --dataset ogbl-BALBc_no1_spatial_no_edge_at
 MLP|`python3 mlp.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr` 
 GCN GCN |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
 GCN GCN + embeddings |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_node_embedding`
-GCN SAGE + embeddings|`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_node_embedding --use_sage`
-GCN SAGE |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_sage`
+GCN SAGE + embeddings|`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_node_embedding --use_sage  --num_layers 3 --hidden_channels 128`
+GCN SAGE |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_sage  --num_layers 3 --hidden_channels 128`
 SEAL |`python3 seal_link_pred.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
 
 
@@ -161,9 +167,9 @@ If you are unsure what options are available, simply run the following command t
 
 use `python3 gnn.py --dataset ogbl-xyz`.
 
-2. **Testing**
+1.2 **Testing**
 
-*Download Trained Weight* and place them in the respective model folder
+*Download Trained Weights* and place them in the respective model folder
 |Model Name | Checkpoint | 
 -----|---------------
 Adamic Adar|[heuristic, not applicable]
@@ -177,15 +183,16 @@ GCN SAGE + embeddings |[download](https://syncandshare.lrz.de/getlink/fiEb3iZrrU
 GCN SAGE |[download](https://syncandshare.lrz.de/getlink/fi2TtEzMKUSxastBvEGmUjzx/GNN_SAGE)
 SEAL |[download](https://syncandshare.lrz.de/getlink/fiGbhGhyYFCyqGfnWqsjKbHb/SEAL)
 
-Go to `./VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
+Go to `VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
 
-e.g. to run GNN, one needs to use the following `python3 gnn.py --load_state_dict --test_only --dataset DATASET_NAME`
+e.g. to run GCN, one needs to use the following `python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --load_state_dict --test_only`
 
-The same applies for the other models
+The same applies for the other models with two additional flags `--load_state_dict` and `--test_only`
 #### 2. Node Classification task
 
-1. **Training**
-Go to `./VesselGraph/source/baseline_models/node_classification/` and select a `MODEL` directory to run
+2.1 **Training**
+
+Go to `VesselGraph/source/baseline_models/node_classification/` and select a `MODEL` directory to run
 
 Model Name | Script
 -----|---------------
@@ -198,9 +205,9 @@ MLP | `python3 mlp.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
 SpecMLP-W + C&S | `python3 mlp_cs.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
 SpecMLP-W + C&S + Node2Vec| `python3 mlp_cs.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --use_embed`
 
-2. **Testing**
+2.2 **Testing**
 
-*Download Trained Weight* and place them in the respective model folder
+*Download Trained Weights* and place them in the respective model folder
 |Model Name | Checkpoint | 
 -----|---------------
 GCN|[download](https://syncandshare.lrz.de/getlink/fi7P51t9pk7Tm7gU83ABi7x2/gnn)
@@ -212,7 +219,7 @@ MLP|[download](https://syncandshare.lrz.de/getlink/fiH4GzQvCtS728iDec4mGWeq/mlp)
 SpecMLP-W + C\&S |[download](https://syncandshare.lrz.de/getlink/fiKJdZz19iAQCPmPxrFNPRQ9/mlp_cs)
 SpecMLP-W + C\&S + N2Vec|[download](https://syncandshare.lrz.de/getlink/fiWahsBTS6uAvEFFLqpzaThN/mlp_cs_node2vec)
 
-Go to `./VesselGraph/source/baseline_models/node_classification/` and select go a `MODEL` directory to run
+Go to `VesselGraph/source/baseline_models/node_classification/` and select go a `MODEL` directory to run
 
 e.g. to run GNN, one needs to use the following `python3 gnn.py --load_state_dict --test_only --dataset DATASET_NAME`
 
@@ -222,13 +229,13 @@ The same applies for the other models
 
 We are a living and continously maintained repository! Therefore, we welcome contributions of additional datasets and methods! There are multiple ways to contribute; if you are willing to share whole brain segmentations and graphs .... 
 
-
-## Link to the Base Dataset
+## Acknowledgement 
+#### 1. Link to the Base Dataset
 1. Vessap Dataset: [[website](http://discotechnologies.org/VesSAP/)][[paper](https://doi.org/10.1038/s41592-020-0792-1)]
 2. Kleinfeld Dataset: [[website](https://neurophysics.ucsd.edu/software.php)][[paper](https://doi.org/10.1016/j.neuron.2021.02.006)]
 3. Synthetic Dataset: [[website](https://github.com/giesekow/deepvesselnet/wiki/Datasets)][[paper](https://doi.org/10.1016/j.media.2012.04.009)]
 
-## Link to the Baseline Models
+#### 2. Link to the Baseline Models
 1. GCN: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1609.02907)]
 2. SAGE: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1706.02216)]
 3. GraphSAINT: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1907.04931)]

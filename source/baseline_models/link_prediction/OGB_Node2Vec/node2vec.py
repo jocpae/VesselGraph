@@ -42,7 +42,7 @@ def main():
     device = f'cuda:{args.device}' if torch.cuda.is_available() else 'cpu'
     device = torch.device(device)
 
-    dataset = PygLinkPropPredDataset(name=args.dataset)
+    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
     data = dataset[0]
 
     model = Node2Vec(data.edge_index, args.embedding_dim, args.walk_length,

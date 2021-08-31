@@ -242,7 +242,7 @@ def main():
     print(f'Running on: {args.dataset}')
     print(f'Utilizing Evaluation Metric: {args.eval_metric}')
 
-    dataset = PygLinkPropPredDataset(name=args.dataset)
+    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
 
     # stole this from Muhan Zhang's OGB SEAL repository
 
@@ -273,7 +273,7 @@ def main():
     data.x[:, 2] = torch.nn.functional.normalize(data.x[:, 2], dim=0)
 
     x = data.x.to(torch.float)
-    embedding_name = 'node2vec_'+ args.dataset +'.pt'
+    embedding_name = os.path.dirname(os.getcwd())+'/OGB_Node2Vec/node2vec_'+ args.dataset +'.pt'
     try:
         embedding = torch.load(embedding_name, map_location='cpu')
     except OSError as e:
@@ -324,8 +324,8 @@ def main():
                     f'Valid: {100 * valid_res:.2f}%, ' +
                     f'Test: {100 * test_res:.2f}%')
 
-                print(log_text)
-                exit()
+            print(log_text)
+            exit()
     
         # instantiate tensorboard writer
         writer = SummaryWriter(os.path.join(args.log_dir,f'{args.curr_param_idx}_of_{args.n_par_combs}'))

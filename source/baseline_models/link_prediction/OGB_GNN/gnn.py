@@ -345,7 +345,7 @@ def main():
 
     if args.use_edge_weight:
 
-        dataset = PygLinkPropPredDataset(name=args.dataset)
+        dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
         data = dataset[0]
         data.edge_weight = torch.abs(data.edge_attr[:,2]) # 2 is radius
         data.edge_weight = data.edge_weight.view(-1).to(torch.float)
@@ -353,7 +353,8 @@ def main():
 
     else:
         dataset = PygLinkPropPredDataset(name=args.dataset,
-                                     transform=T.ToSparseTensor())
+                                     transform=T.ToSparseTensor(),
+                                     root='../dataset')
         data = dataset[0]
      
     data.x = data.x.to(torch.float)
@@ -364,7 +365,7 @@ def main():
     data.x[:, 2] = torch.nn.functional.normalize(data.x[:, 2], dim=0)
 
     if args.use_node_embedding:
-        embedding_name = 'node2vec_'+ args.dataset +'.pt'
+        embedding_name = os.path.dirname(os.getcwd())+'/OGB_Node2Vec/node2vec_'+ args.dataset +'.pt'
         data.x = torch.cat([data.x, torch.load(embedding_name)], dim=-1)
 
     data = data.to(device)
@@ -474,8 +475,8 @@ def main():
                     f'Valid: {100 * valid_res:.2f}%, ' +
                     f'Test: {100 * test_res:.2f}%')
 
-                print(log_text)
-                exit()
+            print(log_text)
+            exit()
 
         # init tensorboard writer
         writer = SummaryWriter(os.path.join(args.log_dir,f'{args.curr_param_idx}_of_{args.n_par_combs}'))

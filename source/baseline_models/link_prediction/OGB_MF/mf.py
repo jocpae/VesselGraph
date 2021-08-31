@@ -248,7 +248,7 @@ def main():
     print(f'Running on {args.dataset}')
     print(f'Utilizing evaluation metric {args.eval_metric}')
 
-    dataset = PygLinkPropPredDataset(name=args.dataset)
+    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
 
     #  from Muhan Zhang's OGB SEAL repository
 

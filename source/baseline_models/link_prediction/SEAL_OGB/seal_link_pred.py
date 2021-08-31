@@ -35,7 +35,6 @@ warnings.simplefilter('ignore', SparseEfficiencyWarning)
 from utils import *
 from models import *
 
-from link_dataset import LinkVesselGraph
 from torch.utils.tensorboard import SummaryWriter
 
 class SEALDataset(InMemoryDataset):
@@ -429,7 +428,7 @@ parser.add_argument('--keep_old', action='store_true',
                     help="do not overwrite old files in the save directory")
 parser.add_argument('--continue_from', type=int, default=None, 
                     help="from which epoch's checkpoint to continue training")
-parser.add_argument('--only_test', action='store_true', 
+parser.add_argument('--test_only', action='store_true', 
                     help="only test without training")
 parser.add_argument('--test_multiple_models', action='store_true', 
                     help="test multiple models together")
@@ -467,7 +466,7 @@ with open(log_file, 'a') as f:
 use_edge_feature = True if args.use_edge_attr else False
 
 if args.dataset.startswith('ogbl'):
-    dataset = PygLinkPropPredDataset(name=args.dataset)
+    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
     split_edge = dataset.get_edge_split()
     data = dataset[0]
 
@@ -731,7 +730,7 @@ for run in range(args.runs):
         start_epoch = args.continue_from + 1
         args.epochs -= args.continue_from
     
-    if args.only_test:
+    if args.test_only:
         results = test()
         for key, result in results.items():
             loggers[key].add_result(run, result)

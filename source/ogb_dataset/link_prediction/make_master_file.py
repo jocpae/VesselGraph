@@ -248,12 +248,12 @@ dataset_dict[name]['binary'] = True
 
 ########################################################################################################################################
 
-### add meta-information about BL6J_no1
-name = 'ogbl-BL6J_no1_spatial_edge_attr'
+### add meta-information about C57BL_6_no1
+name = 'ogbl-C57BL_6_no1_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'BL6J_no1_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'C57BL_6_no1_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiR9hsVweGLzHeP5Qji2cYfA/C57BL_6_no1_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -264,12 +264,12 @@ dataset_dict[name]['additional edge files'] = 'None'
 dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
-### add meta-information about BL6J_no1
-name = 'ogbl-BL6J_no1_spatial_no_edge_attr'
+### add meta-information about C57BL_6_no1
+name = 'ogbl-C57BL_6_no1_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'BL6J_no1_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'C57BL_6_no1_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiJYCz3CL8ZhJf1RQ72fpFgf/C57BL_6_no1_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -280,12 +280,12 @@ dataset_dict[name]['additional edge files'] = 'None'
 dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
-### add meta-information about BL6J_no2
-name = 'ogbl-BL6J_no2_spatial_edge_attr'
+### add meta-information about C57BL_6_no2
+name = 'ogbl-C57BL_6_no2_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'BL6J_no2_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'C57BL_6_no2_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiTPmvV1pp6YwE51sXQhoyis/C57BL_6_no2_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -296,12 +296,12 @@ dataset_dict[name]['additional edge files'] = 'None'
 dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
-### add meta-information about BL6J_no2
-name = 'ogbl-BL6J_no2_spatial_no_edge_attr'
+### add meta-information about C57BL_6_no2
+name = 'ogbl-C57BL_6_no2_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'BL6J_no2_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'C57BL_6_no2_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi6sWj4sGtxEBzYWLhrukFxv/C57BL_6_no2_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -312,12 +312,12 @@ dataset_dict[name]['additional edge files'] = 'None'
 dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
-### add meta-information about BL6J_no3
-name = 'ogbl-BL6J_no3_spatial_edge_attr'
+### add meta-information about C57BL_6_no3
+name = 'ogbl-C57BL_6_no3_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'BL6J_no3_spatial_edge_attr'
+dataset_dict[name]['download_name'] = 'C57BL_6_no3_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiLH1fgKZqsuCPhMVDigMsU9/C57BL_6_no3_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -328,12 +328,12 @@ dataset_dict[name]['additional edge files'] = 'None'
 dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
-### add meta-information about BL6J_no3
-name = 'ogbl-BL6J_no3_spatial_no_edge_attr'
+### add meta-information about C57BL_6_no3
+name = 'ogbl-C57BL_6_no3_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
-dataset_dict[name]['download_name'] = 'BL6J_no3_spatial_no_edge_attr'
+dataset_dict[name]['download_name'] = 'C57BL_6_no3_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiFAeug6CMKr8ewSjaaEMBgu/C57BL_6_no3_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -351,7 +351,7 @@ name = 'ogbl-CD1-E_no1_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'CD1-E_no1_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi6snQEXpThwEnLfYzxVgtgs/CD1_E_no1_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -367,7 +367,7 @@ name = 'ogbl-CD1-E_no1_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'CD1-E_no1_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiYQtYJuREt2VRHSMDhZiKHi/CD1_E_no1_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -383,7 +383,7 @@ name = 'ogbl-CD1-E_no2_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'CD1-E_no2_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi6xL6ouXJS4nonMwThWCHyw/CD1_E_no2_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -399,7 +399,7 @@ name = 'ogbl-CD1-E_no2_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'CD1-E_no2_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi25o7bpza7ckHudKt67dtEM/CD1_E_no2_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -415,7 +415,7 @@ name = 'ogbl-CD1-E_no3_spatial_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'CD1-E_no3_spatial_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi2v41S3otQThKAJS7ckz7i3/CD1_E_no3_spatial_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True
@@ -431,7 +431,7 @@ name = 'ogbl-CD1-E_no3_spatial_no_edge_attr'
 dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
 dataset_dict[name]['download_name'] = 'CD1-E_no3_spatial_no_edge_attr'
 dataset_dict[name]['version'] = 1
-dataset_dict[name]['url'] = ''
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiP1BDBdWdpoxFZjfb7vGCuM/CD1_E_no3_spatial_no_edge_attr.zip'
 ## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
 dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
 dataset_dict[name]['has_node_attr'] = True

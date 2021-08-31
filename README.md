@@ -154,7 +154,7 @@ GCN GCN |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
 GCN GCN + embeddings |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_node_embedding`
 GCN SAGE + embeddings|`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_node_embedding --use_sage  --num_layers 3 --hidden_channels 128`
 GCN SAGE |`python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --use_sage  --num_layers 3 --hidden_channels 128`
-SEAL |`python3 seal_link_pred.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
+SEAL |`python3 seal_link_pred.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --dynamic_train --dynamic_val --dynamic_test --use_feature`
 
 
 For the dataset name, we follow the OGB convention. For example, to run the `BALBc_no1` whole brain with a spatial splitting strategy, and without edge features (edge attributes),

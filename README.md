@@ -18,10 +18,18 @@ This new dataset paves a pathway towards translating advanced graph learning res
 
 ![alt text](synthetic_overview.png "Logo Title Text 1")
 
-## Reference  
-Authors Authors Authors "Whole Brain Vessel Graphs: A Dataset and Benchmark for Graph Learning and Neuroscience (VesselGraph)", [arXiv:XYZ](https://arxiv.org/abs/XYZ)
-  
-Please cite this work if any of our code or datasets are helpful for your research. Considering the specific graphs, please also cite the respective original datasets as described in the preprint.
+## Reference 
+```
+@misc{paetzold2021brain,
+      title={Whole Brain Vessel Graphs: A Dataset and Benchmark for Graph Learning and Neuroscience (VesselGraph)}, 
+      author={Johannes C. Paetzold and Julian McGinnis and Suprosanna Shit and Ivan Ezhov and Paul Büschl and Chinmay Prabhakar and Mihail I. Todorov and Anjany Sekuboyina and Georgios Kaissis and Ali Ertürk and Stephan Günnemann and Bjoern H. Menze},
+      year={2021},
+      eprint={2108.13233},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
+Please cite this work if any of our code or datasets are helpful for your research. Considering the specific graphs and baseline models please also cite the respective original articles as described in the preprint.
 ## License 
 
 Our software is licensed under the [MIT license](https://github.com/jocpae/VesselGraph/LICENSE).

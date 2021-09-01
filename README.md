@@ -94,11 +94,11 @@ and run `python3 generate_ogbl_dataset.py --dataset BALBc_no1 --splitting_strate
 
 Argument list:
 
-      --dataset from the list of `Dataset Name` in the table above
-      --splitting_strategy either `random` or `spatial`
-      --seed if any other random split than the default one
-      --train_val_test if any other train val test split % than the default one
-      --data_root_dir root directory where the data will be stored
+      --dataset: from the list of `Dataset Name` in the table above
+      --splitting_strategy: either `random` or `spatial`
+      --seed: if any other random split than the default one
+      --train_val_test: if any other train val test split % than the default one
+      --data_root_dir: root directory where the data will be stored
 
 - Subsequently run `update_ogbl_master.sh` for compiling the ogb repository locally.
 
@@ -107,14 +107,14 @@ Argument list:
 
 - Go to `./source/ogb_dataset/node_classification/` 
 
-and run `python3 generate_ogbn_dataset.py --dataset BALBc_no1 --train_val_test 0.8 0.1 0.1`
+and run `python3 generate_ogbn_dataset.py --dataset BALBc_no1 --train_val_test 0.8 0.1 0.1 --data_root_dir data`
 
 Argument list:
 
-      --dataset from the list of `Dataset Name` in the table above
-      --seed if any other random split than the default one
-      --train_val_test if any other train val test split % than the default one
-      --data_root_dir root directory where the data will be stored
+      --dataset: from the list of `Dataset Name` in the table above
+      --seed: if any other random split than the default one
+      --train_val_test: if any other train val test split % than the default one
+      --data_root_dir: root directory where the data will be stored
 
 - Subsequently run `update_ogbn_master.sh` for compiling the ogb repository locally.
 
@@ -205,10 +205,10 @@ Go to `VesselGraph/source/baseline_models/node_classification/` and select a `MO
 Model Name | Script
 -----|---------------
 GCN | `python3 gnn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
-GraphSAGE | `python3 gnn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --use_sage`
-GraphSAINT | `python3 graph_saint.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
-SIGN | `python3 sign.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
-Cluster-GCN | `python3 cluster_gcn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
+GraphSAGE | `python3 gnn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --use_sage --num_layers 4 --hidden_channels 128`
+GraphSAINT | `python3 graph_saint.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --num_layers 4 --hidden_channels 64 --walk_length 7`
+SIGN | `python3 sign.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --hidden_channels 128`
+Cluster-GCN | `python3 cluster_gcn.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --num_layers 4 --num_partitions 9`
 MLP | `python3 mlp.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
 SpecMLP-W + C&S | `python3 mlp_cs.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg`
 SpecMLP-W + C&S + Node2Vec| `python3 mlp_cs.py --dataset ogbn-BALBc_no1_pb_minRadiusAvg --use_embed`
@@ -229,7 +229,7 @@ SpecMLP-W + C\&S + N2Vec|[download](https://syncandshare.lrz.de/getlink/fiWahsBT
 
 Go to `VesselGraph/source/baseline_models/node_classification/` and select go a `MODEL` directory to run
 
-e.g. to run GNN, one needs to use the following `python3 gnn.py --load_state_dict --test_only --dataset DATASET_NAME`
+e.g. to run GNN, one needs to use the following `python3 gnn.py --model_states STATE_DICT_NAME --test_only --dataset DATASET_NAME`
 
 The same applies for the other models
 

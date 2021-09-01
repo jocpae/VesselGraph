@@ -94,11 +94,11 @@ and run `python3 generate_ogbl_dataset.py --dataset BALBc_no1 --splitting_strate
 
 Argument list:
 
-      `--dataset` from the list of `Dataset Name` in the table above
-      `--splitting_strategy` either `random` or `spatial`
-      `--seed` if any other random split than the default one
-      `--train_val_test` if any other train val test split % than the default one
-      `--data_root_dir` root directory where the data will be stored
+      --dataset from the list of `Dataset Name` in the table above
+      --splitting_strategy either `random` or `spatial`
+      --seed if any other random split than the default one
+      --train_val_test if any other train val test split % than the default one
+      --data_root_dir root directory where the data will be stored
 
 - Subsequently run `update_ogbl_master.sh` for compiling the ogb repository locally.
 
@@ -111,10 +111,10 @@ and run `python3 generate_ogbn_dataset.py --dataset BALBc_no1 --train_val_test 0
 
 Argument list:
 
-      `--dataset` from the list of `Dataset Name` in the table above
-      `--seed` if any other random split than the default one
-      `--train_val_test` if any other train val test split % than the default one
-      `--data_root_dir` root directory where the data will be stored
+      --dataset from the list of `Dataset Name` in the table above
+      --seed if any other random split than the default one
+      --train_val_test if any other train val test split % than the default one
+      --data_root_dir root directory where the data will be stored
 
 - Subsequently run `update_ogbn_master.sh` for compiling the ogb repository locally.
 

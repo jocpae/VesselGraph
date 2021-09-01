@@ -1,7 +1,8 @@
 import sys
 import os
 
-sys.path.append('../../../')
+from pathlib import Path
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[3]))
 
 os.environ["OMP_NUM_THREADS"] = "2" # export OMP_NUM_THREADS=1
 os.environ["OPENBLAS_NUM_THREADS"] = "2" # export OPENBLAS_NUM_THREADS=1
@@ -248,7 +249,8 @@ def main():
     print(f'Running on {args.dataset}')
     print(f'Utilizing evaluation metric {args.eval_metric}')
 
-    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
+    dataset = PygLinkPropPredDataset(name=args.dataset,
+                                    root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
 
     #  from Muhan Zhang's OGB SEAL repository
 
@@ -260,7 +262,7 @@ def main():
     if not os.path.exists(args.res_dir):
         os.makedirs(args.res_dir) 
         # Backup python files.
-    copy('mf.py', args.res_dir)
+    # copy('mf.py', args.res_dir)
     log_file = os.path.join(args.res_dir, 'log.txt')
 
     # Save command line input.
@@ -299,7 +301,7 @@ def main():
 
             print("Loading submission state dictionaries")
 
-            append = 'neurips_state_dict_final_mf_'
+            append = str(Path(os.path.abspath(__file__)).parents[0])+'/neurips_state_dict_final_mf_'
             predictor_name = append + 'predictor_checkpoint.pth'
             optimizer_name = append + 'optimizer_checkpoint.pth'
             emb_name = append + 'emb_checkpoint.pth'

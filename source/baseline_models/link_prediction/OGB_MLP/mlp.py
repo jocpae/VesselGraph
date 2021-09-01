@@ -1,6 +1,7 @@
 import sys
-sys.path.append('../../../')
+from pathlib import Path
 import os
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[3]))
 import argparse
 import time
 from shutil import copy
@@ -242,7 +243,8 @@ def main():
     print(f'Running on: {args.dataset}')
     print(f'Utilizing Evaluation Metric: {args.eval_metric}')
 
-    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
+    dataset = PygLinkPropPredDataset(name=args.dataset,
+                                    root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
 
     # stole this from Muhan Zhang's OGB SEAL repository
 
@@ -254,7 +256,7 @@ def main():
     if not os.path.exists(args.res_dir):
         os.makedirs(args.res_dir) 
         # Backup python files.
-    copy('mlp.py', args.res_dir)
+    # copy('mlp.py', args.res_dir)
     log_file = os.path.join(args.res_dir, 'log.txt')
 
     # Save command line input.
@@ -273,7 +275,7 @@ def main():
     data.x[:, 2] = torch.nn.functional.normalize(data.x[:, 2], dim=0)
 
     x = data.x.to(torch.float)
-    embedding_name = os.path.dirname(os.getcwd())+'/OGB_Node2Vec/node2vec_'+ args.dataset +'.pt'
+    embedding_name = str(Path(os.path.abspath(__file__)).parents[1])+'/OGB_Node2Vec/node2vec_'+ args.dataset +'.pt'
     try:
         embedding = torch.load(embedding_name, map_location='cpu')
     except OSError as e:
@@ -300,7 +302,7 @@ def main():
 
             print("Loading submission state dictionaries")
 
-            append = 'neurips_state_dict_final_mlp_'
+            append = str(Path(os.path.abspath(__file__)).parents[0])+'/neurips_state_dict_final_mlp_'
             predictor_name = append + 'predictor_checkpoint.pth'
             optimizer_name = append + 'optimizer_checkpoint.pth'
 

@@ -1,6 +1,7 @@
 import sys
-sys.path.append('../../../')
+from pathlib import Path
 import os
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[3]))
 import argparse
 import torch
 from torch_geometric.nn import Node2Vec
@@ -15,7 +16,7 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "2" # export VECLIB_MAXIMUM_THREADS=1
 os.environ["NUMEXPR_NUM_THREADS"] = "2" # export NUMEXPR_NUM_THREADS=1
 
 def save_embedding(dataset_name, model):
-    embedding_name = 'node2vec_'+ dataset_name +'.pt'
+    embedding_name = str(Path(os.path.abspath(__file__)).parents[0])+'/node2vec_'+ dataset_name +'.pt'
     #torch.save(model.embedding.weight.data.cpu(), 'embedding.pt')
     torch.save(model.embedding.weight.data.cpu(), embedding_name)
 
@@ -42,7 +43,8 @@ def main():
     device = f'cuda:{args.device}' if torch.cuda.is_available() else 'cpu'
     device = torch.device(device)
 
-    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
+    dataset = PygLinkPropPredDataset(name=args.dataset,
+                                     root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
     data = dataset[0]
 
     model = Node2Vec(data.edge_index, args.embedding_dim, args.walk_length,

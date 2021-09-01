@@ -13,7 +13,7 @@ from torch_geometric.data.makedirs import makedirs
 from torch_geometric.utils import to_undirected, remove_isolated_nodes, remove_self_loops
 from torch_sparse import coalesce
 
-from vessap_utils import *
+from .vessap_utils import *
 
 class LinkVesselGraph(InMemoryDataset):
     r"""A variety of generated graph datasets including whole mouse brain vasculature graphs from
@@ -95,13 +95,19 @@ class LinkVesselGraph(InMemoryDataset):
             'AlanBrainAtlas': False},
     }
  
-    def __init__(self, root, name, splitting_strategy='spatial',
+    def __init__(self,
+                root,
+                name,
+                splitting_strategy='spatial',
                 number_of_workers = 8,
-                val_ratio = 0.1, test_ratio = 0.1,
+                val_ratio = 0.1,
+                test_ratio = 0.1,
                 use_edge_attr: bool = True,
                 use_atlas: bool = False,
                 seed = 123,
-                transform=None, pre_transform=None):
+                transform=None,
+                pre_transform=None,
+                ):
  
         self.name = name
 

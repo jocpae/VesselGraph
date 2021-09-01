@@ -62,15 +62,15 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 #### Download Dataset
 |Dataset Name | Unprocessed | Preprocessed |
 |-----|-------------|--------------|
-|BALBc_no1|[download](https://syncandshare.lrz.de/getlink/fiWxG4k3jRhLNGmW7RHddvKY/BALBc_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-|BALBc_no2 |[download](https://syncandshare.lrz.de/getlink/fiCWEj5mnuwDkgbjww6CAbF4/BALBc_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
-BALBc_no3 |[download](https://syncandshare.lrz.de/getlink/fiBNTpDbmMQoTx6qpoieATMh/BALBc_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
-C57BL_6_no1  |[download](https://syncandshare.lrz.de/getlink/fiToWvNWjmf2165TtStGWG3a/C57BL_6_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
-C57BL_6_no2  |[download](https://syncandshare.lrz.de/getlink/fiTs8xQM7yGuD4dSc4uvEWa4/C57BL_6_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip) |
-C57BL_6_no3  |[download](https://syncandshare.lrz.de/getlink/fiAmLSy2j5CePwoWcZhZc6Hz/C57BL_6_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip) |
-CD1-E_no1 |[download](https://syncandshare.lrz.de/getlink/fiSDag6MmmdUqhNmZAMgMb2U/CD1-E_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip) |
-CD1-E_no2 |[download](https://syncandshare.lrz.de/getlink/fiVtFCYtugvPwvvCSSfWPFzc/CD1-E_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip) |
-CD1-E_no3 |[download](https://syncandshare.lrz.de/getlink/fiMCHhkfr33bFxr2guDWtYYL/CD1-E_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip) |
+`BALBc_no1`|[download](https://syncandshare.lrz.de/getlink/fiWxG4k3jRhLNGmW7RHddvKY/BALBc_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
+`BALBc_no2` |[download](https://syncandshare.lrz.de/getlink/fiCWEj5mnuwDkgbjww6CAbF4/BALBc_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
+`BALBc_no3` |[download](https://syncandshare.lrz.de/getlink/fiBNTpDbmMQoTx6qpoieATMh/BALBc_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip) |
+`C57BL_6_no1`|[download](https://syncandshare.lrz.de/getlink/fiToWvNWjmf2165TtStGWG3a/C57BL_6_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip) |
+`C57BL_6_no2`|[download](https://syncandshare.lrz.de/getlink/fiTs8xQM7yGuD4dSc4uvEWa4/C57BL_6_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip) |
+`C57BL_6_no3`|[download](https://syncandshare.lrz.de/getlink/fiAmLSy2j5CePwoWcZhZc6Hz/C57BL_6_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip) |
+`CD1-E_no1`|[download](https://syncandshare.lrz.de/getlink/fiSDag6MmmdUqhNmZAMgMb2U/CD1-E_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip) |
+`CD1-E_no2`|[download](https://syncandshare.lrz.de/getlink/fiVtFCYtugvPwvvCSSfWPFzc/CD1-E_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip) |
+`CD1-E_no3`|[download](https://syncandshare.lrz.de/getlink/fiMCHhkfr33bFxr2guDWtYYL/CD1-E_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip) |
 <!-- 
 C57BL/6-K18 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 C57BL/6-K19 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
@@ -88,21 +88,33 @@ Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.p
 #### 5. Convert to OGB Dataloader
 1. **For Graph** **G**
 
-- **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/link_prediction/python3 generate_ogbl_dataset.py`
+- Got to `./source/ogb_dataset/link_prediction/` 
 
-- **DATA SPLIT:** The train/validation/test split can be set using the function `./source/ogb_dataset/link_prediction/vesap_utils.py`
+and run `python3 generate_ogbl_dataset.py --dataset BALBc_no1 --splitting_strategy random --train_val_test 0.8 0.1 0.1 --data_root_dir data` 
 
-- Got to `./source/ogb_dataset/link_prediction/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above and `--splitting_strategy` either `random` or `spatial`
+Argument list:
+
+      `--dataset` from the list of `Dataset Name` in the table above
+      `--splitting_strategy` either `random` or `spatial`
+      `--seed` if any other random split than the default one
+      `--train_val_test` if any other train val test split % than the default one
+      `--data_root_dir` root directory where the data will be stored
 
 - Subsequently run `update_ogbl_master.sh` for compiling the ogb repository locally.
 
 2. **For Line Graph** **L(G)**
 
-- **RANDOM SEED:** the seed can be fixed in `./source/ogb_dataset/node_classification/generate_ogbn_dataset.py`
 
-- **DATA SPLIT:** The train/validation/test split can be set by modifying `./source/ogb_dataset/node_classification/generate_ogbn_dataset.py`
+- Go to `./source/ogb_dataset/node_classification/` 
 
-- Go to `./source/ogb_dataset/node_classification/` and run `python3 generate_ogbl_dataset.py` with argument `--dataset` from the list of `Dataset Name` in the table above
+and run `python3 generate_ogbn_dataset.py --dataset BALBc_no1 --train_val_test 0.8 0.1 0.1`
+
+Argument list:
+
+      `--dataset` from the list of `Dataset Name` in the table above
+      `--seed` if any other random split than the default one
+      `--train_val_test` if any other train val test split % than the default one
+      `--data_root_dir` root directory where the data will be stored
 
 - Subsequently run `update_ogbn_master.sh` for compiling the ogb repository locally.
 
@@ -110,11 +122,8 @@ Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.p
 
 ```bash
 Enter indices of desired features (Use "," to separate them): 0,1,2
-
 Enter feature index of desired label: 4
-
 Choose between a certain number of balanced classes (bc) or define classes by pixel boundaries (pb): pb
-
 Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13.33
 ```
 - Subsequently run `update_ogbn_master.sh` for node-classification task.
@@ -122,20 +131,19 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 
 ## Dataloader Instruction
 
-#### 1. Pytorch-geometric Dataloader
+#### 1. **Pytorch-geometric Dataloader**
 
-We provide PyG dataset classes for link and node prediction tasks in `source/pytorch_dataset/`. Utilize LinkVesselGraph and NodeVesselGraph respectively.
+We provide PyG dataset classes for link and node prediction tasks in `source/pytorch_dataset/`. Utilize `LinkVesselGraph` and `NodeVesselGraph` respectively. See the `vesselgraph.ipnb` for a toy example.
 
-#### 1. OGB Dataloader
+#### 2. **OGB Dataloader**
 
-We store our graphs as OGBN (OGB Node Prediction) and OGBL (Link Prediction) graphs. All algorithms in `source/baseline_models/` rely on OGB Dataloaders
-and process the graphs in OGB compatible format.
+We store our graphs as OGBN (OGB Node Prediction) and OGBL (Link Prediction) graphs. All algorithms in `source/baseline_models/` rely on OGB Dataloaders and process the graphs in OGB compatible format.
 
 ## Baseline Instruction
 
 All baseline model can be run out-of-the-box with the follwoing commands which automatically downloads the processed dataset.
 
-#### 1. Link Prediction task
+### 1. **Link Prediction task**
 
 1.1 **Training**
 
@@ -188,7 +196,7 @@ Go to `VesselGraph/source/baseline_models/link_prediction/` and select go a `MOD
 e.g. to run GCN, one needs to use the following `python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --load_state_dict --test_only`
 
 The same applies for the other models with two additional flags `--load_state_dict` and `--test_only`
-#### 2. Node Classification task
+### 2. **Node Classification task**
 
 2.1 **Training**
 

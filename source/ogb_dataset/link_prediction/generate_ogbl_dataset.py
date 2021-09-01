@@ -5,8 +5,8 @@ import os.path as osp
 import sys
 
 from numpy.random import seed
-
-sys.path.append("../../")
+from pathlib import Path
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[2]))
 
 import torch
 import numpy as np
@@ -18,6 +18,7 @@ import torch_geometric.transforms as T
 
 from pytorch_dataset.link_dataset import LinkVesselGraph
 from ogb.io import DatasetSaver
+from ogb.linkproppred import LinkPropPredDataset
 
 # step 1
 
@@ -33,6 +34,7 @@ parser.add_argument('--splitting_strategy', help='Splitting Strategy: random or 
 parser.add_argument('--number_of_workers', type=str, default=4)
 parser.add_argument('--seed', type=int, default=123, help="Set the seed for torch, numpy and random functions.")
 parser.add_argument('--data_root_dir', type=str, default='data')
+parser.add_argument('--train_val_test', nargs='*', type=float, default=[0.8, 0.1, 0.1], help='Set train val test split of data')
 
 args = parser.parse_args()
 dataset_name = 'ogbl-' + args.dataset + '_' + args.splitting_strategy # e.g. ogbl-BALBc_no1_spatial
@@ -44,8 +46,12 @@ else:
 if args.use_atlas:
     dataset_name +=  '_atlas'
 
+if np.sum(args.train_val_test)!=1.:
+    raise ValueError('Sum of train-val-test split must be 1.0')
 
-saver = DatasetSaver(dataset_name = dataset_name, is_hetero = False, version = 1)
+saver = DatasetSaver(dataset_name = dataset_name,
+                    is_hetero = False,
+                    version = 1)
 
 use_edge_attr = True if args.use_edge_attr else False
 use_atlas = True if args.use_atlas else False
@@ -62,8 +68,13 @@ np.random.seed(args.seed)
 
 # load PyTorch Geometrics Graph
 dataset = LinkVesselGraph(root=os.path.join(args.data_root_dir, args.splitting_strategy), 
-        name=args.dataset, splitting_strategy=args.splitting_strategy,
-        number_of_workers = args.number_of_workers, seed=args.seed)
+                          name=args.dataset,
+                          splitting_strategy=args.splitting_strategy,
+                          number_of_workers = args.number_of_workers,
+                          val_ratio = args.train_val_test[1],
+                          test_ratio = args.train_val_test[2],
+                          seed=args.seed,
+                          )
 
 data = dataset[0]  # Get the first graph object.
 
@@ -146,8 +157,6 @@ meta_dict = saver.get_meta_dict()
 print(meta_dict)
 
 # step 7 - tesing the dataset object
-
-from ogb.linkproppred import LinkPropPredDataset
 dataset = LinkPropPredDataset(dataset_name, meta_dict = meta_dict)
 
 # see if it is working properly

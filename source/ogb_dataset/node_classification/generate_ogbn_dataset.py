@@ -2,8 +2,8 @@ import os
 import os.path as osp
 import sys
 
-sys.path.insert(0, '../../')
-
+from pathlib import Path
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[2]))
 
 import torch
 import numpy as np
@@ -16,6 +16,7 @@ from pytorch_dataset.node_dataset import NodeVesselGraph
 from pytorch_dataset.vessap_utils import *
 from ogb.io import DatasetSaver
 
+from ogb.nodeproppred import NodePropPredDataset
 # for multi-class labeling
 from sklearn.preprocessing import KBinsDiscretizer
 
@@ -27,16 +28,23 @@ from sklearn.preprocessing import KBinsDiscretizer
 
 parser = argparse.ArgumentParser(description='generate OGB Node Prediction Dataset')
 parser.add_argument('-ds','--dataset', help='Dataset name (without ogbn-).', type=str,required=True)
+parser.add_argument('--data_root_dir', type=str, default='data')
 parser.add_argument('--seed', type=int, default=94, help="Set the seed for torch, numpy and random functions.")
+parser.add_argument('--train_val_test', nargs='*', type=float, default=[0.8, 0.1, 0.1], help='Set train val test split of data')
 
 args = vars(parser.parse_args())
 ds_name = args['dataset']
 
 dataset_name = 'ogbn-' + ds_name # e.g. ogbl-italo
 
+if np.sum(args['train_val_test'])!=1.:
+    raise ValueError('Sum of train-val-test split must be 1.0')
+
 # saver = DatasetSaver(dataset_name = dataset_name, is_hetero = False, version = 1)
 
-dataset = NodeVesselGraph(root='data', name=ds_name, pre_transform=T.LineGraph(force_directed=False))
+dataset = NodeVesselGraph(root=args["data_root_dir"],
+                         name=ds_name,
+                         pre_transform=T.LineGraph(force_directed=False))
 data = dataset[0]  # Get the first graph object.
 graph_list = []
 graph = dict()
@@ -94,9 +102,9 @@ split_idx = dict()
 num_data = len(labels)
 np.random.seed(args.seed)
 perm = np.random.permutation(num_data)
-split_idx['train'] = torch.from_numpy(perm[:int(0.8*num_data)])
-split_idx['valid'] = torch.from_numpy(perm[int(0.8*num_data): int(0.9*num_data)])
-split_idx['test'] = torch.from_numpy(perm[int(0.9*num_data):])
+split_idx['train'] = torch.from_numpy(perm[:int(args['train_val_test'][0]*num_data)])
+split_idx['valid'] = torch.from_numpy(perm[int(args['train_val_test'][0]*num_data): int((args['train_val_test'][0]+args['train_val_test'][1])*num_data)])
+split_idx['test'] = torch.from_numpy(perm[int((args['train_val_test'][0]+args['train_val_test'][1])*num_data):])
 saver.save_split(split_idx, split_name = 'random')
 
 # step 5
@@ -125,8 +133,6 @@ saver.save_task_info(task_type = 'multiclass classification', eval_metric = 'acc
 meta_dict = saver.get_meta_dict()
 
 # step 7 - tesing the dataset object
-
-from ogb.nodeproppred import NodePropPredDataset
 dataset = NodePropPredDataset(dataset_name, meta_dict = meta_dict)
 
 # see if it is working properly

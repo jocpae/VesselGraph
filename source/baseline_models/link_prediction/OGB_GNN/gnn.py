@@ -1,8 +1,7 @@
 import sys
-
-sys.path.append('../../../')
-
+from pathlib import Path
 import os
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[3]))
 
 # limit CPU load for the server
 os.environ["OMP_NUM_THREADS"] = "2" # export OMP_NUM_THREADS=1
@@ -345,7 +344,8 @@ def main():
 
     if args.use_edge_weight:
 
-        dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
+        dataset = PygLinkPropPredDataset(name=args.dataset,
+                                        root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
         data = dataset[0]
         data.edge_weight = torch.abs(data.edge_attr[:,2]) # 2 is radius
         data.edge_weight = data.edge_weight.view(-1).to(torch.float)
@@ -354,7 +354,7 @@ def main():
     else:
         dataset = PygLinkPropPredDataset(name=args.dataset,
                                      transform=T.ToSparseTensor(),
-                                     root='../dataset')
+                                     root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
         data = dataset[0]
      
     data.x = data.x.to(torch.float)
@@ -365,7 +365,7 @@ def main():
     data.x[:, 2] = torch.nn.functional.normalize(data.x[:, 2], dim=0)
 
     if args.use_node_embedding:
-        embedding_name = os.path.dirname(os.getcwd())+'/OGB_Node2Vec/node2vec_'+ args.dataset +'.pt'
+        embedding_name = str(Path(os.path.abspath(__file__)).parents[1])+'/OGB_Node2Vec/node2vec_'+ args.dataset +'.pt'
         data.x = torch.cat([data.x, torch.load(embedding_name)], dim=-1)
 
     data = data.to(device)
@@ -387,7 +387,7 @@ def main():
         os.makedirs(args.res_dir) 
     
     # Backup python files.
-    copy('gnn.py', args.res_dir)
+    # copy('gnn.py', args.res_dir)
     log_file = os.path.join(args.res_dir, 'log.txt')
 
     # Save command line input.
@@ -438,7 +438,7 @@ def main():
 
             print("Loading State Dictonaries")
 
-            dict_path = 'neurips_state_dict_final_gnn_'
+            dict_path = str(Path(os.path.abspath(__file__)).parents[0])+'/neurips_state_dict_final_gnn_'
 
             if args.use_sage:
 

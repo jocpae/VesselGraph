@@ -4,8 +4,10 @@
 
 import argparse
 import time
-import os, sys
-sys.path.append('../../../')
+import sys
+from pathlib import Path
+import os
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[3]))
 import os.path as osp
 from shutil import copy
 import copy as cp
@@ -453,10 +455,10 @@ args.res_dir = os.path.join('results/{}{}'.format(args.dataset, args.save_append
 print('Results will be saved in ' + args.res_dir)
 if not os.path.exists(args.res_dir):
     os.makedirs(args.res_dir) 
-if not args.keep_old:
+# if not args.keep_old:
     # Backup python files.
-    copy('seal_link_pred.py', args.res_dir)
-    copy('utils.py', args.res_dir)
+    # copy('seal_link_pred.py', args.res_dir)
+    # copy('utils.py', args.res_dir)
 log_file = os.path.join(args.res_dir, 'log.txt')
 # Save command line input.
 cmd_input = 'python ' + ' '.join(sys.argv) + '\n'
@@ -469,7 +471,8 @@ with open(log_file, 'a') as f:
 use_edge_feature = True if args.use_edge_attr else False
 
 if args.dataset.startswith('ogbl'):
-    dataset = PygLinkPropPredDataset(name=args.dataset, root='../dataset')
+    dataset = PygLinkPropPredDataset(name=args.dataset,
+                                     root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
     split_edge = dataset.get_edge_split()
     data = dataset[0]
 
@@ -735,7 +738,7 @@ for run in range(args.runs):
 
         print("Loading submission state dictionaries")
 
-        append = 'neurips_state_dict_final_seal_'
+        append = str(Path(os.path.abspath(__file__)).parents[0])+'/neurips_state_dict_final_seal_'
         model_name = append + 'model_checkpoint.pth'
         optimizer_name = append + 'optimizer_checkpoint.pth'
 

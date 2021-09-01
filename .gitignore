@@ -64,7 +64,11 @@ Documentation.zip
 *.mat
 #pickle
 *.pt
+*.pth
 
 # figures
 *.png
 *.pdf
+
+*log*
+*results*

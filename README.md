@@ -74,12 +74,12 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 <!-- 
 C57BL/6-K18 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 C57BL/6-K19 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-C57BL/6-K20 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-Synth. Graph 1 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-Synth. Graph 2 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-Synth. Graph 3 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-Synth. Graph 4 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-Synth. Graph 5 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) | -->
+C57BL/6-K20 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |-->
+Synth. Graph 1 |[download](https://syncandshare.lrz.de/getlink/fiBRoY7z2c3YbgVMXfs5nnUc/synthetic_graph_1_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiXfSD14pKGM54L5BqZxF8vF/synthetic_graph_1.zip) |
+Synth. Graph 2 |[download](https://syncandshare.lrz.de/getlink/fiR9Ktp26Zqhv23gmUBkzg5N/synthetic_graph_2_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiEDhbBHmqawVwKaBeWwHgT8/synthetic_graph_2.zip) |
+Synth. Graph 3 |[download](https://syncandshare.lrz.de/getlink/fi6gyGJ9Btx5U2AKzoegyscn/synthetic_graph_3_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiPvTKvqhqNtQ8B6UyGfbvGi/synthetic_graph_3.zip) |
+Synth. Graph 4 |[download](https://syncandshare.lrz.de/getlink/fi7ZSVgucX2jyn9hBRtnwPKa/synthetic_graph_4_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiFq7BVkRZekbBYQSVYX8L6K/synthetic_graph_4.zip) |
+Synth. Graph 5 |[download](https://syncandshare.lrz.de/getlink/fiFfcKCNE2uK3d5CJ8wxBMo8/synthetic_graph_5_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fi5dos737XVZxuyqQ5gmUW6p/synthetic_graph_5.zip) | 
 
 #### 3. Generate Atlas features
 Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`

@@ -9,7 +9,8 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "2"  # export VECLIB_MAXIMUM_THREADS=1
 os.environ["NUMEXPR_NUM_THREADS"] = "2"  # export NUMEXPR_NUM_THREADS=1
 
 import sys
-sys.path.append('../../../')
+from pathlib import Path
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[3]))
 
 import argparse
 
@@ -219,7 +220,8 @@ def main():
                    'roc_auc_ovo_weighted': {'function': skm.roc_auc_score,
                                             'kwargs': {'multi_class': 'ovo', 'average': 'weighted'}}}
 
-    dataset = PygNodePropPredDataset(name=args.dataset)
+    dataset = PygNodePropPredDataset(name=args.dataset,
+                                     root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
     split_idx = dataset.get_idx_split()
     data = dataset[0]
 
@@ -308,7 +310,7 @@ def main():
         writer = SummaryWriter(log_dir)
 
         if args.model_states is not None:
-            state_dict = torch.load(args.model_states)
+            state_dict = torch.load(args.model_states, map_location='cpu')
             model.load_state_dict(state_dict)
         else:
             model.reset_parameters()

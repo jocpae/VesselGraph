@@ -10,7 +10,8 @@ os.environ["NUMEXPR_NUM_THREADS"] = "2"  # export NUMEXPR_NUM_THREADS=1
 
 import sys
 
-sys.path.append('../../../')
+from pathlib import Path
+sys.path.append(str(Path(os.path.abspath(__file__)).parents[3]))
 
 import argparse
 
@@ -258,7 +259,8 @@ def main():
                                             'kwargs': {'multi_class': 'ovo', 'average': 'weighted'}}}
 
     dataset = PygNodePropPredDataset(name=args.dataset,
-                                     transform=T.ToSparseTensor())
+                                     transform=T.ToSparseTensor(),
+                                     root=str(Path(os.path.abspath(__file__)).parents[1])+'/dataset')
     data = dataset[0]
 
     # normalize node features
@@ -358,7 +360,7 @@ def main():
         writer = SummaryWriter(log_dir)
 
         if args.model_states is not None:
-            state_dict = torch.load(args.model_states)
+            state_dict = torch.load(args.model_states, map_location='cpu')
             model.load_state_dict(state_dict)
         else:
             model.reset_parameters()

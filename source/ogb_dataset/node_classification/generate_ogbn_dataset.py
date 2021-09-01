@@ -27,6 +27,8 @@ from sklearn.preprocessing import KBinsDiscretizer
 
 parser = argparse.ArgumentParser(description='generate OGB Node Prediction Dataset')
 parser.add_argument('-ds','--dataset', help='Dataset name (without ogbn-).', type=str,required=True)
+parser.add_argument('--seed', type=int, default=94, help="Set the seed for torch, numpy and random functions.")
+
 args = vars(parser.parse_args())
 ds_name = args['dataset']
 
@@ -90,7 +92,7 @@ saver.save_target_labels(labels)
 
 split_idx = dict()
 num_data = len(labels)
-np.random.seed(94)
+np.random.seed(args.seed)
 perm = np.random.permutation(num_data)
 split_idx['train'] = torch.from_numpy(perm[:int(0.8*num_data)])
 split_idx['valid'] = torch.from_numpy(perm[int(0.8*num_data): int(0.9*num_data)])

@@ -100,6 +100,7 @@ class LinkVesselGraph(InMemoryDataset):
                 val_ratio = 0.1, test_ratio = 0.1,
                 use_edge_attr: bool = True,
                 use_atlas: bool = False,
+                seed = 123,
                 transform=None, pre_transform=None):
  
         self.name = name
@@ -112,6 +113,7 @@ class LinkVesselGraph(InMemoryDataset):
         self.url = self.available_datasets[self.name]['url']
         self.val_ratio = val_ratio
         self.test_ratio = test_ratio
+        self.seed = seed
         self.use_edge_attr = use_edge_attr
         self.use_atlas = use_atlas
         self.splitting_strategy = splitting_strategy
@@ -175,9 +177,9 @@ class LinkVesselGraph(InMemoryDataset):
     def process(self):
 
         # reproducible results
-        np.random.seed(123)
-        torch.manual_seed(123)
-        np.random.seed(123)
+        np.random.seed(self.seed)
+        torch.manual_seed(self.seed)
+        np.random.seed(self.seed)
 
         data_list = []
         # get subfolders of each mouse brain

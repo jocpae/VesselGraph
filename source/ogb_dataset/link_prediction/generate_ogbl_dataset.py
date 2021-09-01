@@ -4,6 +4,8 @@ import os
 import os.path as osp
 import sys
 
+from numpy.random import seed
+
 sys.path.append("../../")
 
 import torch
@@ -29,6 +31,7 @@ parser.add_argument('--use_edge_attr', action='store_true', help="whether to con
 parser.add_argument('--use_atlas', action='store_true', help="whether to consider Alan Brain Atlas region as node feature.")
 parser.add_argument('--splitting_strategy', help='Splitting Strategy: random or spatial.', type=str,required=True)
 parser.add_argument('--number_of_workers', type=str, default=4)
+parser.add_argument('--seed', type=int, default=123, help="Set the seed for torch, numpy and random functions.")
 parser.add_argument('--data_root_dir', type=str, default='data')
 
 args = parser.parse_args()
@@ -51,7 +54,7 @@ print("Using edge attributes: ", use_edge_attr)
 print("Using atlas node attributes: ", use_atlas)
 
 # seeding for reproducible result
-np.random.seed(12)
+np.random.seed(args.seed)
 
 # step 2:
 # Create graph_list, storing your graph objects, and call saver.save_graph_list(graph_list).
@@ -60,7 +63,7 @@ np.random.seed(12)
 # load PyTorch Geometrics Graph
 dataset = LinkVesselGraph(root=os.path.join(args.data_root_dir, args.splitting_strategy), 
         name=args.dataset, splitting_strategy=args.splitting_strategy,
-        number_of_workers = args.number_of_workers)
+        number_of_workers = args.number_of_workers, seed=args.seed)
 
 data = dataset[0]  # Get the first graph object.
 

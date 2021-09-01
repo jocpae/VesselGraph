@@ -56,58 +56,71 @@ class LinkVesselGraph(InMemoryDataset):
 
         'synthetic': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fiYbEo8Vv1mpHWtT2ShRqB3i/synthetic.zip',
-                      'AlanBrainAtlas':False},
+                      'AlanBrainAtlas':False, 'extraction_method':'voreen'},
         'synthetic_graph_1': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fiXfSD14pKGM54L5BqZxF8vF/synthetic_graph_1.zip',
-                      'AlanBrainAtlas':False},
+                      'AlanBrainAtlas':False,'extraction_method':'voreen'},
         'synthetic_graph_2': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fiEDhbBHmqawVwKaBeWwHgT8/synthetic_graph_2.zip',
-                      'AlanBrainAtlas':False},
+                      'AlanBrainAtlas':False, 'extraction_method':'voreen'},
         'synthetic_graph_3': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fiPvTKvqhqNtQ8B6UyGfbvGi/synthetic_graph_3.zip',
-                      'AlanBrainAtlas':False},
+                      'AlanBrainAtlas':False, 'extraction_method':'voreen'},
         'synthetic_graph_4': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fiFq7BVkRZekbBYQSVYX8L6K/synthetic_graph_4.zip',
-                      'AlanBrainAtlas':False},
+                      'AlanBrainAtlas':False, 'extraction_method':'voreen'},
         'synthetic_graph_5': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fi5dos737XVZxuyqQ5gmUW6p/synthetic_graph_5.zip',
-                      'AlanBrainAtlas':False},
+                      'AlanBrainAtlas':False, 'extraction_method':'voreen'},
 
         'BALBc_no1': {'folder': 'BALBc_no1.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip',
-                      'AlanBrainAtlas': True},
+                      'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'BALBc_no2': {'folder': 'BALBc-no2.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip',
-                      'AlanBrainAtlas': True},
+                      'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'BALBc_no3': {'folder': 'BALBc-no3.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiD9e98baTK3FWC9iPhLQWd8/BALBc_no3.zip',
-                      'AlanBrainAtlas': True},
+                      'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'C57BL_6_no1': {'folder': 'C57BL_6_no1.zip',
                      'url': 'https://syncandshare.lrz.de/dl/fiVTuLxJeLrqyWdMBy5BGrug/C57BL_6_no1.zip',
-                     'AlanBrainAtlas': True},
+                     'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'C57BL_6_no2': {'folder': 'C57BL_6_no2.zip',
                      'url': 'https://syncandshare.lrz.de/dl/fiNFpZd5S9NYvUYzNwLgf5gW/C57BL_6_no2.zip',
-                     'AlanBrainAtlas': True},
+                     'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'C57BL_6_no3': {'folder': 'C57BL_6_no3.zip',
                      'url': 'https://syncandshare.lrz.de/dl/fi3Z62oab67735GLQXZyd2Wd/C57BL_6_no3.zip',
-                     'AlanBrainAtlas': True},
+                     'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'CD1-E_no1': {'folder': 'CD1-E-no1.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip',
-                      'AlanBrainAtlas': True},
+                      'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'CD1-E_no2': {'folder': 'CD1-E-no2.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip',
-                      'AlanBrainAtlas': True},
+                      'AlanBrainAtlas': True, 'extraction_method':'voreen'},
         'CD1-E_no3': {'folder': 'CD1-E-no3.zip',
                       'url': 'https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip',
-                      'AlanBrainAtlas': True},
+                      'AlanBrainAtlas': True, 'extraction_method':'voreen'},
+
+
+        ## Kleinfeld graphs
+
+        'C57BL_6-K18': {'folder': 'C57BL_6-K18.zip',
+                      'url': 'https://syncandshare.lrz.de/dl/fi9ewjPWq5EmUjVDGDbcR28Q/C57BL_6-K18.zip',
+                      'AlanBrainAtlas': False, 'extraction_method':'matlab'},
+        'C57BL_6-K19': {'folder': 'C57BL_6-K19.zip',
+                      'url': 'https://syncandshare.lrz.de/dl/fiNryxTQPREgrXRrcWhm2xW/C57BL_6-K19.zip',
+                      'AlanBrainAtlas': False, 'extraction_method':'matlab'},
+        'C57BL_6-K20': {'folder': 'C57BL_6-K20.zip',
+                      'url': 'https://syncandshare.lrz.de/dl/fiP6oRLaqL9vJYuGfhCS9xbP/C57BL_6-K20.zip',
+                      'AlanBrainAtlas': False, 'extraction_method':'matlab'},
 
         ## selected regions of interest
         'link_vessap_roi1':{'folder': 'link_vessap_roi1.zip',
             'url': 'https://syncandshare.lrz.de/dl/fiWes5GoXWV1AJNVGWbK34cr/link_vessap_roi1.zip',
-            'AlanBrainAtlas': False},
+            'AlanBrainAtlas': False, 'extraction_method':'voreen'},
         'link_vessap_roi3': {'folder': 'link_vessap_roi3.zip',
             'url': 'https://syncandshare.lrz.de/dl/fiKNpy5GZTwzfYjHnAJ1QgLP/link_vessap_roi3.zip',
-            'AlanBrainAtlas': False},
+            'AlanBrainAtlas': False, 'extraction_method':'voreen'},
     }
  
     def __init__(self,
@@ -234,7 +247,11 @@ class LinkVesselGraph(InMemoryDataset):
             data.pos = torch.from_numpy(np.array( df_nodes[['pos_x', 'pos_y', 'pos_z']].to_numpy())) # coordinates
 
             edges = np.column_stack((np.array(df_edges[['node1id']]),np.array(df_edges[['node2id']])))
-            data.edge_attr_keys = ['length','distance','avgRadiusAvg','roundnessAvg','curveness']
+            if self.available_datasets[self.name]['extraction_method'] == 'voreen':
+                data.edge_attr_keys = ['length','distance','avgRadiusAvg','roundnessAvg','curveness']
+            else:
+                data.edge_attr_keys = []
+                print("No edge attributes.")
             edge_features = np.array(df_edges[data.edge_attr_keys].to_numpy())
 
             data.edge_index = torch.tensor(edges, dtype=torch.long).t().contiguous()

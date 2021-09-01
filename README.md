@@ -71,15 +71,17 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 `CD1-E_no1`|[download](https://syncandshare.lrz.de/getlink/fiSDag6MmmdUqhNmZAMgMb2U/CD1-E_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiQs4v6kXvGBviqnuT7BAxjK/CD1-E_no1.zip) |
 `CD1-E_no2`|[download](https://syncandshare.lrz.de/getlink/fiVtFCYtugvPwvvCSSfWPFzc/CD1-E_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiJf6ukkGCdUQwXBKd4Leusp/CD1-E_no2.zip) |
 `CD1-E_no3`|[download](https://syncandshare.lrz.de/getlink/fiMCHhkfr33bFxr2guDWtYYL/CD1-E_no3_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiBkjGNxm7XW5R4gFTWp5MFP/CD1-E_no3.zip) |
-<!-- 
-C57BL/6-K18 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-C57BL/6-K19 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
-C57BL/6-K20 |[download]() |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |-->
-Synth. Graph 1 |[download](https://syncandshare.lrz.de/getlink/fiBRoY7z2c3YbgVMXfs5nnUc/synthetic_graph_1_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiXfSD14pKGM54L5BqZxF8vF/synthetic_graph_1.zip) |
-Synth. Graph 2 |[download](https://syncandshare.lrz.de/getlink/fiR9Ktp26Zqhv23gmUBkzg5N/synthetic_graph_2_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiEDhbBHmqawVwKaBeWwHgT8/synthetic_graph_2.zip) |
-Synth. Graph 3 |[download](https://syncandshare.lrz.de/getlink/fi6gyGJ9Btx5U2AKzoegyscn/synthetic_graph_3_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiPvTKvqhqNtQ8B6UyGfbvGi/synthetic_graph_3.zip) |
-Synth. Graph 4 |[download](https://syncandshare.lrz.de/getlink/fi7ZSVgucX2jyn9hBRtnwPKa/synthetic_graph_4_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiFq7BVkRZekbBYQSVYX8L6K/synthetic_graph_4.zip) |
-Synth. Graph 5 |[download](https://syncandshare.lrz.de/getlink/fiFfcKCNE2uK3d5CJ8wxBMo8/synthetic_graph_5_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fi5dos737XVZxuyqQ5gmUW6p/synthetic_graph_5.zip) | 
+`C57BL_6-K18` |[download](https://syncandshare.lrz.de/getlink/fi8ZViiaHhwJhyvHCGbVV47y/C57BL_6-K18_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fi9ewjPWq5EmUjVDGDbcR28Q/C57BL_6-K18.zip) |
+`C57BL_6-K19` |[download](https://syncandshare.lrz.de/getlink/fi3RtXSK4pUMks59HF6oPGWm/C57BL_6-K19_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiNryxTQPREgrXRrcWhm2xW/C57BL_6-K19.zip) |
+`C57BL_6-K20` |[download](https://syncandshare.lrz.de/getlink/fiNyBFDHxYwG4ZXW8iSK5W56/C57BL_6-K20_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiP6oRLaqL9vJYuGfhCS9xbP/C57BL_6-K20.zip) |
+`Synth. Graph 1`|[download](https://syncandshare.lrz.de/getlink/fiBRoY7z2c3YbgVMXfs5nnUc/synthetic_graph_1_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiXfSD14pKGM54L5BqZxF8vF/synthetic_graph_1.zip) |
+`Synth. Graph 2`|[download](https://syncandshare.lrz.de/getlink/fiR9Ktp26Zqhv23gmUBkzg5N/synthetic_graph_2_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiEDhbBHmqawVwKaBeWwHgT8/synthetic_graph_2.zip) |
+`Synth. Graph 3`|[download](https://syncandshare.lrz.de/getlink/fi6gyGJ9Btx5U2AKzoegyscn/synthetic_graph_3_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiPvTKvqhqNtQ8B6UyGfbvGi/synthetic_graph_3.zip) |
+`Synth. Graph 4`|[download](https://syncandshare.lrz.de/getlink/fi7ZSVgucX2jyn9hBRtnwPKa/synthetic_graph_4_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fiFq7BVkRZekbBYQSVYX8L6K/synthetic_graph_4.zip) |
+`Synth. Graph 5`|[download](https://syncandshare.lrz.de/getlink/fiFfcKCNE2uK3d5CJ8wxBMo8/synthetic_graph_5_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fi5dos737XVZxuyqQ5gmUW6p/synthetic_graph_5.zip) | 
+
+We are currently verifying the C57BL_6-K** graph representations with the Kleinfeld Lab at UC San Diego. As the raw data is not processed using Voreen (our default graph generation pipeline),
+we are in contact with teh authors of the original paper and want to ensure a similar interface to this data.
 
 #### 3. Generate Atlas features
 Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`

@@ -1,7 +1,7 @@
 [![DOI](https://zenodo.org/badge/399400923.svg)](https://zenodo.org/badge/latestdoi/399400923)
 ![alt text](graph_abstract.png "Logo Title Text 1")
 ## Introduction
-Welcome to the project page of *DeepVesselGraph*  A Dataset and Benchmark for Graph Learning and Neuroscience. <br/>
+Welcome to the project page of *VesselGraph*  A Dataset and Benchmark for Graph Learning and Neuroscience. <br/>
 
 Biological neural networks define human and mammalian brain function and intelligence and form ultra-large, spatial, structured graphs. Their neuronal organization is closely interconnected with the spatial organization of the brain's microvasculature, which supplies oxygen to the neurons and builds a complementary spatial graph. In this project we are providing an extendable dataset of whole-brain vessel graphs based on various multi-center imaging protocols. 
 

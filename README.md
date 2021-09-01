@@ -236,9 +236,9 @@ We are a living and continously maintained repository! Therefore, we welcome con
 3. Synthetic Dataset: [[website](https://github.com/giesekow/deepvesselnet/wiki/Datasets)][[paper](https://doi.org/10.1016/j.media.2012.04.009)]
 
 #### 2. Link to the Baseline Models
-1. GCN: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1609.02907)]
-2. SAGE: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1706.02216)]
-3. GraphSAINT: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1907.04931)]
-4. SIGN: [[website](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/2004.11198)]
-5. SpecMLP: [[website](https://github.com/ytchx1999/PyG-ogbn-products/tree/main/spectral%2Bmlp%2Bcs)][[paper](https://arxiv.org/abs/2010.13993)]
-6. SEAL: [[website](https://github.com/facebookresearch/SEAL_OGB)][[paper](https://arxiv.org/pdf/2010.16103.pdf)]
+1. GCN: [[code](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1609.02907)]
+2. SAGE: [[code](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1706.02216)]
+3. GraphSAINT: [[code](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/1907.04931)]
+4. SIGN: [[code](https://github.com/snap-stanford/ogb/tree/master/examples)][[paper](https://arxiv.org/abs/2004.11198)]
+5. SpecMLP: [[code](https://github.com/ytchx1999/PyG-ogbn-products/tree/main/spectral%2Bmlp%2Bcs)][[paper](https://arxiv.org/abs/2010.13993)]
+6. SEAL: [[code](https://github.com/facebookresearch/SEAL_OGB)][[paper](https://arxiv.org/pdf/2010.16103.pdf)]

@@ -442,6 +442,174 @@ dataset_dict[name]['additional edge files'] = 'None'
 dataset_dict[name]['is hetero'] = False
 dataset_dict[name]['binary'] = True
 
+
+#################################################################################################################################
+#                                                                                                                               #
+#                                                   TUM SYNTHETIC GRAPHS                                                        #
+#                                                                                                                               #
+#################################################################################################################################
+
+
+### add meta-information about CD1-E_no3
+name = 'ogbl-synthetic_graph_1_spatial_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_1_spatial_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiWatsaNGRKbUZ8xNRqsP5FW/synthetic_graph_1_spatial_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = True
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about CD1-E_no3
+name = 'ogbl-synthetic_graph_1_spatial_no_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_1_spatial_no_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi4maG5UCbZ11N6dXt92wmGx/synthetic_graph_1_spatial_no_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = False
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 2
+name = 'ogbl-synthetic_graph_2_spatial_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_2_spatial_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi9WJzeKHkPtAiwh93vqpcvN/synthetic_graph_2_spatial_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = True
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 2
+name = 'ogbl-synthetic_graph_2_spatial_no_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_2_spatial_no_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiWZQDe7cVQcD4EPstGQgJVS/synthetic_graph_2_spatial_no_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = False
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 3
+name = 'ogbl-synthetic_graph_3_spatial_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_3_spatial_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi2qyEDYQkYVuQz18uti5nY2/synthetic_graph_3_spatial_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = True
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 3
+name = 'ogbl-synthetic_graph_3_spatial_no_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_3_spatial_no_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fi9uEEMEwDGBj62jrGkazHtm/synthetic_graph_3_spatial_no_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = False
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 4
+name = 'ogbl-synthetic_graph_4_spatial_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_4_spatial_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiPfUpRPdGsHs6an9x7FcrWS/synthetic_graph_4_spatial_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = True
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 4
+name = 'ogbl-synthetic_graph_4_spatial_no_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_4_spatial_no_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiJ6B5kPNzDX3qwYewMoA1K5/synthetic_graph_4_spatial_no_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = False
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 5
+name = 'ogbl-synthetic_graph_5_spatial_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_5_spatial_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiQQ8htiRVq6hpXyFNFFandW/synthetic_graph_5_spatial_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = True
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
+### add meta-information about synthetic graph 5
+name = 'ogbl-synthetic_graph_5_spatial_no_edge_attr'
+dataset_dict[name] = {'eval metric': 'mrr', 'task type': 'link prediction'}
+dataset_dict[name]['download_name'] = 'synthetic_graph_5_spatial_no_edge_attr'
+dataset_dict[name]['version'] = 1
+dataset_dict[name]['url'] = 'https://syncandshare.lrz.de/dl/fiEPGB8KWQx3kmbJQwrdTYt8/synthetic_graph_5_spatial_no_edge_attr.zip'
+## For undirected grarph, we only store one directional information. This flag allows us to add inverse edge at pre-processing time
+dataset_dict[name]['add_inverse_edge'] = False # c.f. https://github.com/snap-stanford/ogb/issues/241
+dataset_dict[name]['has_node_attr'] = True
+dataset_dict[name]['has_edge_attr'] = False
+dataset_dict[name]['split'] = 'spatial'
+dataset_dict[name]['additional node files'] = 'None'
+dataset_dict[name]['additional edge files'] = 'None'
+dataset_dict[name]['is hetero'] = False
+dataset_dict[name]['binary'] = True
+
 df = pd.DataFrame(dataset_dict)
 # saving the dataframe 
 df.to_csv('master.csv')

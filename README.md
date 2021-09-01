@@ -81,7 +81,7 @@ Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with argu
 `Synth. Graph 5`|[download](https://syncandshare.lrz.de/getlink/fiFfcKCNE2uK3d5CJ8wxBMo8/synthetic_graph_5_raw.zip) |[download](https://syncandshare.lrz.de/getlink/fi5dos737XVZxuyqQ5gmUW6p/synthetic_graph_5.zip) | 
 
 We are currently verifying the C57BL_6-K** graph representations with the Kleinfeld Lab at UC San Diego. As the raw data is not processed using Voreen (our default graph generation pipeline),
-we are in contact with teh authors of the original paper and want to ensure a similar interface to this data.
+we are in contact with the authors of the original paper and want to ensure a similar interface to this data.
 
 #### 3. Generate Atlas features
 Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`

@@ -34,22 +34,24 @@ Please cite this work if any of our code or datasets are helpful for your resear
 
 Our software is licensed under the [MIT license](https://github.com/jocpae/VesselGraph/LICENSE).
 The data is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Namensnennung-Nicht kommerziell 4.0 International Lizenz</a>.
-## Table of contents
 
-* [Dataset](#dataset-description)
-* [Dataloader](#dataloader-instruction)
-* [Baselines](#baseline-instruction)
 
-## Instructions
+## Quick Start
+
+### Table of contents
+
+* [Dataset Description](#dataset-description)
+* [Dataloader Instruction](#dataloader-instruction)
+* [Baseline Instruction](#baseline-instruction)
 
 We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automatically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
 For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_master.sh` and `./source/ogb_dataset/node_classification/update_ogbn_master.sh` once, before you execute any
-of the algorithms in `./source/vaseline_models.`.
+of the algorithms in `./source/baseline_models`.
 
 If you would rather work with customized solutions (different datasplits, etc.), we provide you with all steps of our pipeline to generate, preprocess and convert the raw graphs to PyG
 and OGB formats. In the following section, we describe how our graphs have been built. You are invited to skip this section if you prefer working with our preprocessed graphs.
 
-## Dataset Description
+### Dataset Description
 
 This is the description about how we prepared the dataset. The parameters are described as used in the paper
 #### 1. Generate Raw Graph fron Segmentation using Voreen
@@ -60,7 +62,7 @@ Use [Voreen Graph Generation Tool](https://github.com/jqmcginnis/voreen) to make
 Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with arguments of `--node_list` and `--edge_list`
 
 #### Download Dataset
-|Dataset Name | Unprocessed | Preprocessed |
+|Dataset Name | Raw | Preprocessed |
 |-----|-------------|--------------|
 `BALBc_no1`|[download](https://syncandshare.lrz.de/getlink/fiWxG4k3jRhLNGmW7RHddvKY/BALBc_no1_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiG21AiiCJE6mVRo6tUsNp4N/BALBc_no1.zip) |
 `BALBc_no2` |[download](https://syncandshare.lrz.de/getlink/fiCWEj5mnuwDkgbjww6CAbF4/BALBc_no2_raw.zip) |[download](https://syncandshare.lrz.de/dl/fiS6KM5NvGKfLFrjiCzQh1X1/BALBc_no2.zip) |
@@ -131,27 +133,27 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 - Subsequently run `update_ogbn_master.sh` for node-classification task.
 
 
-## Dataloader Instruction
+### Dataloader Instruction
 
 #### 1. **Pytorch-geometric Dataloader**
 
-We provide PyG dataset classes for link and node prediction tasks in `source/pytorch_dataset/`. Utilize `LinkVesselGraph` and `NodeVesselGraph` respectively. See the `vesselgraph.ipnb` for a toy example.
+We provide PyG dataset classes for link and node prediction tasks in `./source/pytorch_dataset/`. Utilize `LinkVesselGraph` and `NodeVesselGraph` respectively. See the `vesselgraph.ipnb` for a toy example.
 
 #### 2. **OGB Dataloader**
 
-We store our graphs as OGBN (OGB Node Prediction) and OGBL (Link Prediction) graphs. All algorithms in `source/baseline_models/` rely on OGB Dataloaders and process the graphs in OGB compatible format.
+We store our graphs as OGBN (OGB Node Prediction) and OGBL (Link Prediction) graphs. All algorithms in `./source/baseline_models/` rely on OGB Dataloaders and process the graphs in OGB compatible format.
 
-## Baseline Instruction
+### Baseline Instruction
 
 All baseline model can be run out-of-the-box with the follwoing commands which automatically downloads the processed dataset.
 
-### 1. **Link Prediction task**
+#### 1. **Link Prediction task**
 
 1.1 **Training**
 
-To create the node embeddings go to `VesselGraph/source/baseline_models/link_prediction/OGB_Node2Vec/` and run`python3 node2vec.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
+To create the node embeddings go to `./source/baseline_models/link_prediction/OGB_Node2Vec/` and run`python3 node2vec.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
 
-Subsequently go to`VesselGraph/source/baseline_models/link_prediction/` and enter a `MODEL` directory to run
+Subsequently go to`./source/baseline_models/link_prediction/` and enter a `MODEL` directory to run
 
 Model Name | Script
 -----|---------------
@@ -198,11 +200,12 @@ Go to `VesselGraph/source/baseline_models/link_prediction/` and select go a `MOD
 e.g. to run GCN, one needs to use the following `python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --load_state_dict --test_only`
 
 The same applies for the other models with two additional flags `--load_state_dict` and `--test_only`
-### 2. **Node Classification task**
+
+#### 2. **Node Classification task**
 
 2.1 **Training**
 
-Go to `VesselGraph/source/baseline_models/node_classification/` and select a `MODEL` directory to run
+Go to `./source/baseline_models/node_classification/` and select a `MODEL` directory to run
 
 Model Name | Script
 -----|---------------
@@ -229,7 +232,7 @@ MLP|[download](https://syncandshare.lrz.de/getlink/fiH4GzQvCtS728iDec4mGWeq/mlp)
 SpecMLP-W + C\&S |[download](https://syncandshare.lrz.de/getlink/fiKJdZz19iAQCPmPxrFNPRQ9/mlp_cs)
 SpecMLP-W + C\&S + N2Vec|[download](https://syncandshare.lrz.de/getlink/fiWahsBTS6uAvEFFLqpzaThN/mlp_cs_node2vec)
 
-Go to `VesselGraph/source/baseline_models/node_classification/` and select go a `MODEL` directory to run
+Go to `./source/baseline_models/node_classification/` and select go a `MODEL` directory to run
 
 e.g. to run GNN, one needs to use the following `python3 gnn.py --model_states STATE_DICT_NAME --test_only --dataset DATASET_NAME`
 
@@ -240,7 +243,7 @@ The same applies for the other models
 We are a living and continously maintained repository! Therefore, we welcome contributions of additional datasets and methods! There are multiple ways to contribute; if you are willing to share whole brain segmentations and graphs .... 
 
 ## Acknowledgement 
-#### 1. Link to the Base Dataset
+#### 1. Link to the Baseline Dataset
 1. Vessap Dataset: [[website](http://discotechnologies.org/VesSAP/)][[paper](https://doi.org/10.1038/s41592-020-0792-1)]
 2. Kleinfeld Dataset: [[website](https://neurophysics.ucsd.edu/software.php)][[paper](https://doi.org/10.1016/j.neuron.2021.02.006)]
 3. Synthetic Dataset: [[website](https://github.com/giesekow/deepvesselnet/wiki/Datasets)][[paper](https://doi.org/10.1016/j.media.2012.04.009)]

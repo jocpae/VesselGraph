@@ -18,7 +18,11 @@ This new dataset paves a pathway towards translating advanced graph learning res
 
 ![alt text](synthetic_overview.png "Logo Title Text 1")
 
-## Reference 
+## Cite us
+
+- [arXiv link](https://arxiv.org/abs/2108.13233)
+- [Published in NIPS 2021 Dataset & Benchmark Track](https://nips.cc/Conferences/2021/ScheduleMultitrack?event=29873)
+
 ```
 @misc{paetzold2021brain,
       title={Whole Brain Vessel Graphs: A Dataset and Benchmark for Graph Learning and Neuroscience (VesselGraph)}, 
@@ -43,6 +47,8 @@ The data is licensed under a <a rel="license" href="http://creativecommons.org/l
 * [Dataset Description](#dataset-description)
 * [Dataloader Instruction](#dataloader-instruction)
 * [Baseline Instruction](#baseline-instruction)
+
+_NOTE: Currently, our graphs are not officially included in the OGB dataset yet. Please use our custom version of `ogb` in `./source/` instead of the official pip ogb package for now. (See Issue [#4](https://github.com/jocpae/VesselGraph/issues/4).)_
 
 We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automatically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
 For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_master.sh` and `./source/ogb_dataset/node_classification/update_ogbn_master.sh` once, before you execute any
@@ -87,9 +93,12 @@ we are in contact with the authors of the original paper and want to ensure a si
 
 #### 3. Generate Atlas features
 Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`
+
 #### 4. Convert to Pytorch-Geometric Dataloader
 Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-prediction and node-classification task.
+
 #### 5. Convert to OGB Dataloader
+
 1. **For Graph** **G**
 
 - Got to `./source/ogb_dataset/link_prediction/` 
@@ -137,7 +146,7 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 
 #### 1. **Pytorch-geometric Dataloader**
 
-We provide PyG dataset classes for link and node prediction tasks in `./source/pytorch_dataset/`. Utilize `LinkVesselGraph` and `NodeVesselGraph` respectively. See the `vesselgraph.ipnb` for a toy example.
+We provide PyG dataset classes for link and node prediction tasks in `./source/pytorch_dataset/`. Utilize `LinkVesselGraph` and `NodeVesselGraph` respectively. See the `./vesselgraph.ipnb` for a toy example.
 
 #### 2. **OGB Dataloader**
 

@@ -50,10 +50,6 @@ class NodeVesselGraph(InMemoryDataset):
 
     available_datasets = {
 
-        'synthetic': {'folder':'synthetic.zip',
-                      'url':'https://syncandshare.lrz.de/dl/fiYbEo8Vv1mpHWtT2ShRqB3i/synthetic.zip',
-                      'AlanBrainAtlas':False},
-
         'synthetic_graph_1': {'folder':'synthetic.zip',
                       'url':'https://syncandshare.lrz.de/dl/fiXfSD14pKGM54L5BqZxF8vF/synthetic_graph_1.zip',
                       'AlanBrainAtlas':False},

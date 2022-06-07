@@ -51,6 +51,7 @@ The data is licensed under a <a rel="license" href="http://creativecommons.org/l
 _NOTE: Currently, our graphs are not officially included in the OGB dataset yet. Please use our custom version of `ogb` in `./source/` instead of the official pip ogb package for now. (See Issue [#4](https://github.com/jocpae/VesselGraph/issues/4).)_
 
 We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automatically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
+
 For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_master.sh` and `./source/ogb_dataset/node_classification/update_ogbn_master.sh` once, before you execute any
 of the algorithms in `./source/baseline_models`.
 
@@ -65,7 +66,7 @@ Use [Voreen Graph Generation Tool](https://github.com/jqmcginnis/voreen) to make
 
 #### 2. Preprocess Dataset
 
-Go to `./source/dataset_preprocessing/` and run `process_edge_list.py` with arguments of `--node_list` and `--edge_list`
+Go to [`./source/dataset_preprocessing/`](./source/dataset_preprocessing/) and run `process_edge_list.py` with arguments of `--node_list` and `--edge_list`
 
 #### Download Dataset
 |Dataset Name | Raw | Preprocessed |
@@ -92,16 +93,15 @@ We are currently verifying the C57BL_6-K** graph representations with the Kleinf
 we are in contact with the authors of the original paper and want to ensure a similar interface to this data.
 
 #### 3. Generate Atlas features
-Got to `./source/feature_generation/atlas_annotation/` and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`
-
+Go to [`./source/feature_generation/atlas_annotation/`](./source/feature_generation/atlas_annotation/) and run `generate_node_atlas_labels.py` with arguments of `--node_list` and `--edge_list`
 #### 4. Convert to Pytorch-Geometric Dataloader
-Got to `./source/pytorch_dataset/` and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-prediction and node-classification task.
-
+Go to [`./source/pytorch_dataset/`](./source/pytorch_dataset/) and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-prediction and node-classification task.
 #### 5. Convert to OGB Dataloader
 
-1. **For Graph** **G**
+1. **For Graph** `G`
 
-- Got to `./source/ogb_dataset/link_prediction/` 
+
+- Go to [`./source/ogb_dataset/link_prediction/`](./source/ogb_dataset/link_prediction/)
 
 and run `python3 generate_ogbl_dataset.py --dataset BALBc_no1 --splitting_strategy random --train_val_test 0.8 0.1 0.1 --data_root_dir data` 
 
@@ -115,10 +115,10 @@ Argument list:
 
 - Subsequently run `update_ogbl_master.sh` for compiling the ogb repository locally.
 
-2. **For Line Graph** **L(G)**
+2. **For Line Graph** `L(G)`
 
 
-- Go to `./source/ogb_dataset/node_classification/` 
+- Go to [`./source/ogb_dataset/node_classification/`](./source/ogb_dataset/node_classification/)
 
 and run `python3 generate_ogbn_dataset.py --dataset BALBc_no1 --train_val_test 0.8 0.1 0.1 --data_root_dir data`
 
@@ -146,23 +146,23 @@ Enter desired radius boundaries as pixel values (Use "," to separate them): 5,13
 
 #### 1. **Pytorch-geometric Dataloader**
 
-We provide PyG dataset classes for link and node prediction tasks in `./source/pytorch_dataset/`. Utilize `LinkVesselGraph` and `NodeVesselGraph` respectively. See the `./vesselgraph.ipnb` for a toy example.
+We provide PyG dataset classes for link and node prediction tasks in [`./source/pytorch_dataset/`](./source/pytorch_dataset/). Utilize `LinkVesselGraph` and `NodeVesselGraph` respectively. See the [`./vesselgraph.ipnb`](./vesselgraph.ipnb) for a toy example.
 
 #### 2. **OGB Dataloader**
 
-We store our graphs as OGBN (OGB Node Prediction) and OGBL (Link Prediction) graphs. All algorithms in `./source/baseline_models/` rely on OGB Dataloaders and process the graphs in OGB compatible format.
+We store our graphs as OGBN (OGB Node Prediction) and OGBL (Link Prediction) graphs. All algorithms in [`./source/baseline_models/`](./source/baseline_models/) rely on OGB Dataloaders and process the graphs in OGB compatible format.
 
 ### Baseline Instruction
 
-All baseline model can be run out-of-the-box with the follwoing commands which automatically downloads the processed dataset.
+All baseline model can be run out-of-the-box with the following commands which automatically downloads the processed dataset.
 
 #### 1. **Link Prediction task**
 
 1.1 **Training**
 
-To create the node embeddings go to `./source/baseline_models/link_prediction/OGB_Node2Vec/` and run`python3 node2vec.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
+To create the node embeddings go to [`./source/baseline_models/link_prediction/OGB_Node2Vec/`](./source/baseline_models/link_prediction/OGB_Node2Vec/) and run`python3 node2vec.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr`
 
-Subsequently go to`./source/baseline_models/link_prediction/` and enter a `MODEL` directory to run
+Subsequently go to [`./source/baseline_models/link_prediction/`](./source/baseline_models/link_prediction/) and enter a `MODEL` directory to run
 
 Model Name | Script
 -----|---------------
@@ -204,7 +204,7 @@ GCN SAGE + embeddings |[download](https://syncandshare.lrz.de/getlink/fiEb3iZrrU
 GCN SAGE |[download](https://syncandshare.lrz.de/getlink/fi2TtEzMKUSxastBvEGmUjzx/GNN_SAGE)
 SEAL |[download](https://syncandshare.lrz.de/getlink/fiGbhGhyYFCyqGfnWqsjKbHb/SEAL)
 
-Go to `VesselGraph/source/baseline_models/link_prediction/` and select go a `MODEL` directory to run
+Go to [`./source/baseline_models/link_prediction/`](./source/baseline_models/link_prediction/) and select go a `MODEL` directory to run
 
 e.g. to run GCN, one needs to use the following `python3 gnn.py --dataset ogbl-BALBc_no1_spatial_no_edge_attr --load_state_dict --test_only`
 
@@ -214,7 +214,7 @@ The same applies for the other models with two additional flags `--load_state_di
 
 2.1 **Training**
 
-Go to `./source/baseline_models/node_classification/` and select a `MODEL` directory to run
+Go to [`./source/baseline_models/node_classification/`](./source/baseline_models/node_classification/) and select a `MODEL` directory to run
 
 Model Name | Script
 -----|---------------
@@ -241,11 +241,11 @@ MLP|[download](https://syncandshare.lrz.de/getlink/fiH4GzQvCtS728iDec4mGWeq/mlp)
 SpecMLP-W + C\&S |[download](https://syncandshare.lrz.de/getlink/fiKJdZz19iAQCPmPxrFNPRQ9/mlp_cs)
 SpecMLP-W + C\&S + N2Vec|[download](https://syncandshare.lrz.de/getlink/fiWahsBTS6uAvEFFLqpzaThN/mlp_cs_node2vec)
 
-Go to `./source/baseline_models/node_classification/` and select go a `MODEL` directory to run
+Go to [`./source/baseline_models/node_classification/`](./source/baseline_models/node_classification/) and select go a `MODEL` directory to run
 
 e.g. to run GNN, one needs to use the following `python3 gnn.py --model_states STATE_DICT_NAME --test_only --dataset DATASET_NAME`
 
-The same applies for the other models
+The same applies for the other models.
 
 ## Contribute 
 

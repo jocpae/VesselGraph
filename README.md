@@ -18,7 +18,11 @@ This new dataset paves a pathway towards translating advanced graph learning res
 
 ![alt text](synthetic_overview.png "Logo Title Text 1")
 
-## Reference 
+## Cite us
+
+- [arXiv link](https://arxiv.org/abs/2108.13233)
+- [Published in NIPS 2021 Dataset & Benchmark Track](https://nips.cc/Conferences/2021/ScheduleMultitrack?event=29873)
+
 ```
 @misc{paetzold2021brain,
       title={Whole Brain Vessel Graphs: A Dataset and Benchmark for Graph Learning and Neuroscience (VesselGraph)}, 
@@ -44,7 +48,10 @@ The data is licensed under a <a rel="license" href="http://creativecommons.org/l
 * [Dataloader Instruction](#dataloader-instruction)
 * [Baseline Instruction](#baseline-instruction)
 
-We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automatically retrieved by the dataloaders when executing the algorithms in [`./source/baseline_models/`](./source/baseline_models/).
+_NOTE: Currently, our graphs are not officially included in the OGB dataset yet. Please use our custom version of `ogb` in `./source/` instead of the official pip ogb package for now. (See Issue [#4](https://github.com/jocpae/VesselGraph/issues/4).)_
+
+We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automatically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
+
 For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_master.sh` and `./source/ogb_dataset/node_classification/update_ogbn_master.sh` once, before you execute any
 of the algorithms in `./source/baseline_models`.
 
@@ -90,7 +97,9 @@ Go to [`./source/feature_generation/atlas_annotation/`](./source/feature_generat
 #### 4. Convert to Pytorch-Geometric Dataloader
 Go to [`./source/pytorch_dataset/`](./source/pytorch_dataset/) and run `link_dataset.py` and `node_dataset.py` to create pytorch-geometric compatible dataset for link-prediction and node-classification task.
 #### 5. Convert to OGB Dataloader
+
 1. **For Graph** `G`
+
 
 - Go to [`./source/ogb_dataset/link_prediction/`](./source/ogb_dataset/link_prediction/)
 

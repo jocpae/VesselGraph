@@ -13,7 +13,7 @@ from torch_geometric.data.makedirs import makedirs
 from torch_geometric.utils import to_undirected, remove_isolated_nodes, remove_self_loops
 from torch_sparse import coalesce
 
-from .vessap_utils import *
+from vessap_utils import *
 
 class LinkVesselGraph(InMemoryDataset):
     r"""A variety of generated graph datasets including whole mouse brain vasculature graphs from

@@ -52,11 +52,10 @@ _NOTE: Currently, our graphs are not officially included in the OGB dataset yet.
 
 We provide our graphs as preprocessed OGB datasets (OGBN and OGBL) that are automatically retrieved by the dataloaders when executing the algorithms in `./source/baseline_models/`.
 
-For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_master.sh` and `./source/ogb_dataset/node_classification/update_ogbn_master.sh` once, before you execute any
-of the algorithms in `./source/baseline_models`.
-
 If you would rather work with customized solutions (different datasplits, etc.), we provide you with all steps of our pipeline to generate, preprocess and convert the raw graphs to PyG
 and OGB formats. In the following section, we describe how our graphs have been built. You are invited to skip this section if you prefer working with our preprocessed graphs.
+
+For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_master.sh` and `./source/ogb_dataset/node_classification/update_ogbn_master.sh` once after including your own dataset, so it will be broadcasted to the ogb dataloaders, before you execute any of the algorithms in `./source/baseline_models`.
 
 ### Dataset Description
 

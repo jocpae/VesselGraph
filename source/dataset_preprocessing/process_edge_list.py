@@ -68,16 +68,12 @@ x = np.abs(np.array(df_edges['avgRadiusAvg']))
 
 popt, pcov = curve_fit(func, x, y)
 
-
 if args.display_fit:
 	# to check fit
 	plt.scatter(x,y,s=1)
 	plt.scatter(x,func(x,*popt),s=1)
 	plt.show()
 
-# get value from func(xdata, *popt)
-
-df_edges.to_csv('1.csv',index=False,sep=';')
 
 for i in range(0,len(counter)):
 
@@ -140,23 +136,18 @@ for i in range(0,len(counter)):
 
 # remove the duplicate we merged earlier
 df_edges.drop(df_edges.index[duplicates], inplace=True)
-df_edges.to_csv('2.csv',index=False,sep=';')
 
 print("Edge Rows:",len(df_edges.index))
 
 
 # drop all self loops
 df_edges.drop(df_edges[df_edges.node1id == df_edges.node2id].index,inplace=True)
-df_edges.to_csv('3.csv',index=False,sep=';')
-
 print("Edge Rows:",len(df_edges.index))
 
 
 # reset the index and edge id!
 df_edges.reset_index(drop=True, inplace=True)
 df_edges['id'] = np.arange(0,len(df_edges.index),1)
-df_edges.to_csv('4.csv',index=False,sep=';')
-
 
 # compute node degrees from scratch
 
@@ -173,8 +164,7 @@ node_degree[node_cnt[:,0]] = node_cnt[:,1] # contains isolated nodes!
 # remove nodes that are not in the edge list!
 # compute node1id and node2id for edge list
 # compute node_degree for node list
-
-df_nodes[['degree']] = np.array(node_degree,dtype=np.uint8)
+df_nodes[['degree']] = node_degree.reshape(len(node_degree),1).astype(dtype=np.int8)
 
 node1 = df_edges[['node1id']].to_numpy()
 node2 = df_edges[['node2id']].to_numpy()

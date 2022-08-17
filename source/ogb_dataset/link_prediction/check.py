@@ -120,9 +120,9 @@ def main():
 
     print("")
 
-    train_pos_hist = plot_dist(split_train_pos, data)
-    valid_pos_hist = plot_dist(split_valid_pos, data)
-    test_pos_hist = plot_dist(split_test_pos, data)
+    train_pos_hist = plot_dist(split_train_pos, data, "train_pos")
+    valid_pos_hist = plot_dist(split_valid_pos, data, "valid_pos")
+    test_pos_hist = plot_dist(split_test_pos, data, "test_pos")
 
     stat, pvalue = stats.ks_2samp(train_pos_hist,valid_pos_hist) 
     print(f'KS-Test stats, p-value train vs valid set {stat, pvalue}')
@@ -135,9 +135,9 @@ def main():
 
     # negative edges
 
-    train_neg_hist = plot_dist(split_train_neg, data)
-    valid_neg_hist = plot_dist(split_valid_neg, data)
-    test_neg_hist = plot_dist(split_test_neg, data)
+    train_neg_hist = plot_dist(split_train_neg, data, "train_neg")
+    valid_neg_hist = plot_dist(split_valid_neg, data, "valid_neg")
+    test_neg_hist = plot_dist(split_test_neg, data, "test_neg")
 
     stat, pvalue = stats.ks_2samp(train_neg_hist,valid_neg_hist) 
     print(f'KS-Test stats, p-value train neg vs valid neg set {stat, pvalue}')

@@ -61,7 +61,7 @@ For this step, please run `./source/ogb_dataset/link_prediction/update_ogbl_mast
 
 This is the description about how we prepared the dataset. The parameters are described as used in the paper
 #### 1. Generate Raw Graph fron Segmentation using Voreen
-Use [Voreen Graph Generation Tool](https://github.com/jqmcginnis/voreen) to make the `node_list` and `edge_list` from a segmentation volume.
+Use [Voreen Graph Generation Tool](https://github.com/jqmcginnis/voreen_tools) to make the `node_list` and `edge_list` from a segmentation volume.
 
 #### 2. Preprocess Dataset
 
